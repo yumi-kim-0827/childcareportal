@@ -5,6 +5,8 @@ import { Card } from "primereact/card";
 import { SelectButton } from "primereact/selectbutton";
 import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
+import { Tag } from "primereact/tag";
+import { Message } from "primereact/message";
 //data
 import location from "@/src/data/location";
 
@@ -58,23 +60,37 @@ export default function Main() {
 
   return (
     <>
-      <Card title="서울 어린이집 리스트">
-        <SelectButton value={code} onChange={handleChange} options={options} />
-        <DataTable
-          value={list}
-          paginator
-          rows={5}
-          rowsPerPageOptions={[5, 10, 25, 50]}
-          tableStyle={{ minWidth: "50rem" }}
-        >
-          <Column field="crname" header="이름" className="w-1/6"></Column>
-          <Column field="craddr" header="주소"></Column>
-          <Column field="crtel" header="전화번호"></Column>
-          <Column field="crcapat" header="정원"></Column>
-          <Column field="crfax" header="팩스"></Column>
-          <Column field="crhome" header="홈페이지"></Column>
-        </DataTable>
-      </Card>
+      <div className="flex flex-col gap-4">
+        <Card title="서울 어린이집 리스트"></Card>
+        <Card>
+          <SelectButton
+            value={code}
+            onChange={handleChange}
+            options={options}
+          />
+        </Card>
+        <Card>
+          <Message
+            severity="success"
+            text={`전체 리스트 수 ${list.length}`}
+            className="mb-2"
+          />
+          <DataTable
+            value={list}
+            paginator
+            rows={5}
+            rowsPerPageOptions={[5, 10, 25, 50]}
+            tableStyle={{ minWidth: "50rem" }}
+          >
+            <Column field="crname" header="이름" className="w-1/6"></Column>
+            <Column field="craddr" header="주소"></Column>
+            <Column field="crtel" header="전화번호"></Column>
+            <Column field="crcapat" header="정원"></Column>
+            <Column field="crfax" header="팩스"></Column>
+            <Column field="crhome" header="홈페이지"></Column>
+          </DataTable>
+        </Card>
+      </div>
     </>
   );
 }
