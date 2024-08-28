@@ -6,6 +6,7 @@ import "@/src/styles/globals.css";
 import { PrimeReactProvider } from "primereact/api";
 //components
 import SideBar from "@/src/components/sidebar/SideBar";
+import AutoBreadcrumb from "@/src/components/breadcrumb/AutoBreadcrumb";
 
 export default function App({ Component, pageProps }) {
   return (
@@ -13,6 +14,7 @@ export default function App({ Component, pageProps }) {
       <div className="wrap">
         <SideBar />
         <div className="p-4 mx-auto w-full max-w-7xl border">
+          <AutoBreadcrumb />
           <Component {...pageProps} />
         </div>
       </div>
