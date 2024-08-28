@@ -11,7 +11,7 @@ import AutoBreadcrumb from "@/src/components/breadcrumb/AutoBreadcrumb";
 export default function App({ Component, pageProps }) {
   return (
     <PrimeReactProvider>
-      <div className="wrap">
+      <div className="flex">
         <SideBar />
         <div className="p-4 mx-auto w-full max-w-7xl border">
           <AutoBreadcrumb />
