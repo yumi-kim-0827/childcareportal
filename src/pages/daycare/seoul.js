@@ -23,11 +23,13 @@ export default function Main() {
   //데이터 형태 변환 함수
   const transformData = (list) => {
     return list.map((item) => ({
+      stcode: item.stcode[0],
       craddr: item.craddr[0],
       crfax: item.crfax[0],
       crhome: item.crhome[0],
       crname: item.crname[0],
       crtel: item.crtel[0],
+      crcapat: item.crcapat[0],
     }));
   };
 
@@ -42,7 +44,6 @@ export default function Main() {
         const data = result.response.item;
         const formedData = transformData(data);
         setList(formedData);
-        console.log(list);
       } else {
         console.log("응답 오류");
       }
@@ -59,13 +60,17 @@ export default function Main() {
     <>
       <Card title="서울 어린이집 리스트">
         <SelectButton value={code} onChange={handleChange} options={options} />
-        {/* {list.map((item, id) => {
-          return <p key={id}>{item.craddr[0]}</p>;
-        })} */}
-        <DataTable value={list} tableStyle={{ minWidth: "50rem" }}>
-          <Column field="crname" header="이름"></Column>
+        <DataTable
+          value={list}
+          paginator
+          rows={5}
+          rowsPerPageOptions={[5, 10, 25, 50]}
+          tableStyle={{ minWidth: "50rem" }}
+        >
+          <Column field="crname" header="이름" className="w-1/6"></Column>
           <Column field="craddr" header="주소"></Column>
           <Column field="crtel" header="전화번호"></Column>
+          <Column field="crcapat" header="정원"></Column>
           <Column field="crfax" header="팩스"></Column>
           <Column field="crhome" header="홈페이지"></Column>
         </DataTable>
