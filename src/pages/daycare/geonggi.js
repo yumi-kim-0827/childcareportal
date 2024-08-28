@@ -7,6 +7,7 @@ import AutoBreadcrumb from "@/src/components/breadcrumb/AutoBreadcrumb";
 export default function Main() {
   return (
     <>
+      <AutoBreadcrumb />
       <p>경기</p>
     </>
   );
