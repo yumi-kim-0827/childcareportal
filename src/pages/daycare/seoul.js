@@ -5,10 +5,11 @@ import { Card } from "primereact/card";
 import { SelectButton } from "primereact/selectbutton";
 import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
-import { Tag } from "primereact/tag";
 import { Message } from "primereact/message";
 //data
 import location from "@/src/data/location";
+//utills
+import transformDayCareData from "@/src/utils/transformDayCareData";
 
 export default function Main() {
   const [list, setList] = useState([]); //어린이집 리스트 배열
@@ -22,19 +23,6 @@ export default function Main() {
     setCode(e.value);
   };
 
-  //데이터 형태 변환 함수
-  const transformData = (list) => {
-    return list.map((item) => ({
-      stcode: item.stcode[0],
-      craddr: item.craddr[0],
-      crfax: item.crfax[0],
-      crhome: item.crhome[0],
-      crname: item.crname[0],
-      crtel: item.crtel[0],
-      crcapat: item.crcapat[0],
-    }));
-  };
-
   const fetchList = async (code) => {
     try {
       const response = await fetch(
@@ -44,7 +32,7 @@ export default function Main() {
       if (response.ok) {
         const result = await response.json();
         const data = result.response.item;
-        const formedData = transformData(data);
+        const formedData = transformDayCareData(data);
         setList(formedData);
       } else {
         console.log("응답 오류");
