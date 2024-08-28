@@ -1,8 +1,11 @@
 import React, { useState, useRef } from "react";
+import { useRouter } from "next/router";
+//components
 import { Ripple } from "primereact/ripple";
 import { StyleClass } from "primereact/styleclass";
 
 export default function SideBar() {
+  const router = useRouter();
   const btnRef1 = useRef(null);
   const btnRef2 = useRef(null);
   const btnRef3 = useRef(null);
@@ -181,24 +184,36 @@ export default function SideBar() {
                     </div>
                   </StyleClass>
                   <ul className="list-none p-0 m-0 overflow-hidden">
-                    <li>
+                    <li
+                      onClick={() => {
+                        router.push("/daycare/");
+                      }}
+                    >
                       <a className="p-ripple flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors w-full">
                         <i className="pi pi-folder mr-2"></i>
                         <span className="font-medium">지도로 찾기</span>
                         <Ripple />
                       </a>
                     </li>
-                    <li>
+                    <li
+                      onClick={() => {
+                        router.push("/daycare/seoul");
+                      }}
+                    >
                       <a className="p-ripple flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors w-full">
                         <i className="pi pi-chart-bar mr-2"></i>
                         <span className="font-medium">서울 어린이집</span>
                         <Ripple />
                       </a>
                     </li>
-                    <li>
+                    <li
+                      onClick={() => {
+                        router.push("/daycare/geonggi");
+                      }}
+                    >
                       <a className="p-ripple flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors w-full">
                         <i className="pi pi-cog mr-2"></i>
-                        <span className="font-medium">Settings</span>
+                        <span className="font-medium">경기 어린이집</span>
                         <Ripple />
                       </a>
                     </li>
