@@ -12,5 +12,4 @@ const transformDayCareData = (data) => {
     crcapat: item.crcapat[0],
   }));
 };
-
 export default transformDayCareData;
