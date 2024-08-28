@@ -2,16 +2,14 @@ import React from "react";
 import { BreadCrumb } from "primereact/breadcrumb";
 import { useRouter } from "next/router";
 import Link from "next/link";
-//utils
 
 const AutoBreadcrumb = () => {
   const router = useRouter();
-
   const pathArray = router.pathname.split("/").filter((segment) => segment);
 
   const items = pathArray.map((path, index) => {
     const url = "/" + pathArray.slice(0, index + 1).join("/");
-    console.log(url);
+
     return {
       label: path === "/" ? <Link href="/">Home</Link> : path,
       url: path !== "/" ? url : undefined,
@@ -22,5 +20,4 @@ const AutoBreadcrumb = () => {
 
   return <BreadCrumb model={items} home={home} />;
 };
-
 export default AutoBreadcrumb;

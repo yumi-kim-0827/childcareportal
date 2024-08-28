@@ -7,22 +7,25 @@ import { SelectButton } from "primereact/selectbutton";
 import location from "@/src/data/location";
 
 export default function Main() {
-  const [list, setList] = useState([]); // 어린이집 리스트 배열
-  const options = location[0].sigungu.map((district) => {
-    return district.name;
-  });
-  const [value, setValue] = useState(options[0]);
+  const [list, setList] = useState([]); //어린이집 리스트 배열
+  const [code, setCode] = useState("11680"); //어린이집 선택 시군구 코드
 
-  const fetchList = async () => {
+  const options = location[0].sigungu.map((district) => {
+    return { label: district.name, value: district.code };
+  });
+
+  const handleChange = (e) => {
+    setCode(e.value);
+  };
+
+  const fetchList = async (code) => {
     try {
-      const arcode = "11740";
       const response = await fetch(
-        `/api/daycare/getTotalDaycare?arcode=${arcode}`
+        `/api/daycare/getTotalDaycare?arcode=${code}`
       );
 
       if (response.ok) {
         const result = await response.json();
-        console.log(result);
         setList(result.response.item);
       } else {
         console.log("응답 오류");
@@ -33,17 +36,20 @@ export default function Main() {
   };
 
   useEffect(() => {
-    fetchList();
-  }, []);
-  console.log(list);
+    if (code) {
+      fetchList(code);
+    } else {
+      fetchList();
+    }
+  }, [code]);
+
   return (
     <>
       <Card title="서울 어린이집 리스트">
-        <SelectButton
-          value={value}
-          onChange={(e) => setValue(e.value)}
-          options={options}
-        />
+        <SelectButton value={code} onChange={handleChange} options={options} />
+        {list.map((item, id) => {
+          return <p key={id}>{item.craddr[0]}</p>;
+        })}
       </Card>
     </>
   );
