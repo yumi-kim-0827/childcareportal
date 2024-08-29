@@ -1,15 +1,16 @@
-// pages/api/daycare/getTotalDaycare.js
-// 전국 어린이집 정보 조회
+// pages/api/daycare/getNewMonthly.js
+// 월별 신규 오픈 어린이집 조회
 import { parseStringPromise } from "xml2js";
 
-export default async function getTotalDaycare(req, res) {
-  const URI = process.env.NEXT_PUBLIC_IP_TOTALCARE_URI;
-  const KEY = process.env.NEXT_PUBLIC_IP_TOTALCARE_KEY;
+export default async function getNewMonthly(req, res) {
+  const URI = process.env.NEXT_PUBLIC_IP_NEWMONTHCARE_URI;
+  const KEY = process.env.NEXT_PUBLIC_IP_NEWMONTHCARE_KEY;
 
   if (req.method === "GET") {
-    const { arcode } = req.query; // 쿼리 파라미터에서 arcode 값을 가져옴
+    const { yyyymm } = req.query; // 쿼리 파라미터에서 date 값을 가져옴
     try {
-      const response = await fetch(`${URI}request?key=${KEY}&arcode=${arcode}`);
+      console.log(date);
+      const response = await fetch(`${URI}request?key=${KEY}&yyyymm=${yyyymm}`);
 
       // 응답의 Content-Type 헤더를 확인
       const contentType = response.headers.get("content-type");

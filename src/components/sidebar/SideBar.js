@@ -217,6 +217,17 @@ export default function SideBar() {
                         <Ripple />
                       </a>
                     </li>
+                    <li
+                      onClick={() => {
+                        router.push("/daycare/newmonthly");
+                      }}
+                    >
+                      <a className="p-ripple flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors w-full">
+                        <i className="pi pi-cog mr-2"></i>
+                        <span className="font-medium">월별 신규 어린이집</span>
+                        <Ripple />
+                      </a>
+                    </li>
                   </ul>
                 </li>
               </ul>

@@ -6,7 +6,7 @@ const NaverMap = ({ item }) => {
   const [scriptLoaded, setScriptLoaded] = useState(false);
   const [markers, setMarkers] = useState([]); //지도 마커 상태관리
   const KEY = process.env.NEXT_PUBLIC_NAVERMAP_CLIENT_ID;
-  console.log(item);
+
   useEffect(() => {
     const handleScriptLoad = () => {
       if (window.naver && window.naver.maps) {
@@ -48,7 +48,7 @@ const NaverMap = ({ item }) => {
 
     if (window.naver && window.naver.maps && window.naver.maps.Service) {
       const address = item.craddr;
-      const kinderName = item.crname;
+      const name = item.crname;
       naver.maps.Service.geocode({ query: address }, (status, response) => {
         if (status === naver.maps.Service.Status.ERROR) {
           console.error("Geocode error:", response);
@@ -56,6 +56,7 @@ const NaverMap = ({ item }) => {
         }
         const geocodeResult = response.v2.addresses[0];
         const { x: longitude, y: latitude } = geocodeResult;
+        console.log(geocodeResult);
 
         // 지도 중심 변경 및 마커 추가
         map.setCenter(new naver.maps.LatLng(latitude, longitude));
@@ -67,12 +68,10 @@ const NaverMap = ({ item }) => {
         // 새로 추가된 마커를 상태에 저장
         setMarkers([marker]);
 
-        //정보창 표시
+        //마커 클릭 시 정보창 표시
         // 정보창 객체
         const infowindow = new naver.maps.InfoWindow({
-          content: ['<div class="iw_inner">', `${kinderName}`, "</div>"].join(
-            ""
-          ),
+          content: ['<div class="iw_inner">', `${name}`, "</div>"].join(""),
         });
 
         naver.maps.Event.addListener(marker, "click", function (e) {
