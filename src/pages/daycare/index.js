@@ -6,7 +6,7 @@ import { Card } from "primereact/card";
 import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
 import { Button } from "primereact/button";
-import NaverMap from "@/src/components/map/NaverMap";
+import NaverMap from "@/src/components/map/daycare/NaverMap";
 import TotalLocationTab from "@/src/components/tab/TotalLocationTab";
 //utills
 import transformDayCareData from "@/src/utils/transformDayCareData";

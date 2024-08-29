@@ -22,7 +22,7 @@ export default function Main() {
   }
 
   const fetchList = async () => {
-    if (!date) return; //date가 null 이면 fetch하지 않음
+    if (!date) return; //date가 null이면 fetch하지 않음
 
     try {
       const yyyymm = formatDate(date);

@@ -1,4 +1,4 @@
-//어린이집 > 서울
+//어린이집>서울
 //pages>daycare>seoul
 import React, { useState, useEffect } from "react";
 //components
