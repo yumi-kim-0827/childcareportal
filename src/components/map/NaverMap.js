@@ -1,12 +1,12 @@
 import { useEffect, useRef, useState } from "react";
 
-const NaverMap = ({ list, onClick }) => {
+const NaverMap = ({ item }) => {
   const mapRef = useRef(null);
   const [map, setMap] = useState(null);
   const [scriptLoaded, setScriptLoaded] = useState(false);
   const [markers, setMarkers] = useState([]); //지도 마커 상태관리
   const KEY = process.env.NEXT_PUBLIC_NAVERMAP_CLIENT_ID;
-
+  console.log(item);
   useEffect(() => {
     const handleScriptLoad = () => {
       if (window.naver && window.naver.maps) {
@@ -43,50 +43,44 @@ const NaverMap = ({ list, onClick }) => {
     }
   };
 
-  const listToCoordinate = (list) => {
-    if (!list || !map || !scriptLoaded) return;
+  const listToCoordinate = (item) => {
+    if (!map || !scriptLoaded || !item) return;
 
     if (window.naver && window.naver.maps && window.naver.maps.Service) {
-      const newMarkers = []; // 새로 추가될 마커를 저장할 배열
+      const address = item.craddr;
+      const kinderName = item.crname;
+      naver.maps.Service.geocode({ query: address }, (status, response) => {
+        if (status === naver.maps.Service.Status.ERROR) {
+          console.error("Geocode error:", response);
+          return;
+        }
+        const geocodeResult = response.v2.addresses[0];
+        const { x: longitude, y: latitude } = geocodeResult;
 
-      list.forEach((item) => {
-        const address = item.craddr[0];
-        const kinderName = item.crname[0];
-        naver.maps.Service.geocode({ query: address }, (status, response) => {
-          const geocodeResult = response.v2.addresses[0];
-          const { x: longitude, y: latitude } = geocodeResult;
+        // 지도 중심 변경 및 마커 추가
+        map.setCenter(new naver.maps.LatLng(latitude, longitude));
+        const marker = new naver.maps.Marker({
+          map: map,
+          position: new naver.maps.LatLng(latitude, longitude),
+        });
 
-          //원래 item 객체에 네이버 맵이 만들어준 geocode(위도, 경도) 추가
-          const extendedItem = { ...item, geocodeResult };
+        // 새로 추가된 마커를 상태에 저장
+        setMarkers([marker]);
 
-          // 지도 중심 변경 및 마커 추가
-          map.setCenter(new naver.maps.LatLng(latitude, longitude));
-          const marker = new naver.maps.Marker({
-            map: map,
-            position: new naver.maps.LatLng(latitude, longitude),
-          });
-          newMarkers.push(marker); // 새로 추가된 마커 저장
+        //정보창 표시
+        // 정보창 객체
+        const infowindow = new naver.maps.InfoWindow({
+          content: ['<div class="iw_inner">', `${kinderName}`, "</div>"].join(
+            ""
+          ),
+        });
 
-          // 새로 추가된 마커를 상태에 저장
-          setMarkers(newMarkers);
-
-          //정보창 표시
-          // 정보창 객체
-          const infowindow = new naver.maps.InfoWindow({
-            content: ['<div class="iw_inner">', `${kinderName}`, "</div>"].join(
-              ""
-            ),
-          });
-
-          naver.maps.Event.addListener(marker, "click", function (e) {
-            if (infowindow.getMap()) {
-              infowindow.close();
-            } else {
-              infowindow.open(map, marker);
-              //맵에서 마커를 클릭해면 해당 객체의 상세 정보 전달
-              onClick(extendedItem);
-            }
-          });
+        naver.maps.Event.addListener(marker, "click", function (e) {
+          if (infowindow.getMap()) {
+            infowindow.close();
+          } else {
+            infowindow.open(map, marker);
+          }
         });
       });
     } else {
@@ -96,8 +90,8 @@ const NaverMap = ({ list, onClick }) => {
 
   useEffect(() => {
     initializeMapAndMarkers();
-    listToCoordinate(list);
-  }, [list]);
+    listToCoordinate(item);
+  }, [item, map, scriptLoaded]);
 
   return (
     <div>

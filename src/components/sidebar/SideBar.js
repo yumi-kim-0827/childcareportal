@@ -12,7 +12,7 @@ export default function SideBar() {
   const btnRef4 = useRef(null);
 
   return (
-    <div className="fixed card flex">
+    <div className="fixed card z-50">
       <div className="min-h-screen flex flex-col relative lg:static">
         <div
           id="app-sidebar-2"
