@@ -1,5 +1,5 @@
-//어린이집 > 서울
-//pages>daycare>seoul
+//돌봄
+//pages>sitter>index
 import React, { useState, useEffect } from "react";
 //components
 import { Card } from "primereact/card";
@@ -9,32 +9,29 @@ import { Column } from "primereact/column";
 import { Message } from "primereact/message";
 //data
 import location from "@/src/data/location";
-//utills
-import transformDayCareData from "@/src/utils/transformDayCareData";
 
 export default function Main() {
-  const [list, setList] = useState([]); //어린이집 리스트 배열
-  const [code, setCode] = useState("11680"); //어린이집 선택 시군구 코드
+  const [ctpvNm, setctpvNm] = useState("");
+  const [list, setList] = useState([]);
 
-  const options = location[0].sigungu.map((district) => {
-    return { label: district.name, value: district.code };
+  const options = location.map((district) => {
+    return { label: district.sido, value: district.sido };
   });
 
   const handleChange = (e) => {
-    setCode(e.value);
+    setctpvNm(e.value);
   };
 
-  const fetchList = async (code) => {
+  const fetchList = async (ctpvNm) => {
     try {
       const response = await fetch(
-        `/api/daycare/getTotalDaycare?arcode=${code}`
+        `/api/sitter/getSitterService?ctpvNm=${ctpvNm}`
       );
 
       if (response.ok) {
         const result = await response.json();
-        const data = result.response.item;
-        const formedData = transformDayCareData(data);
-        setList(formedData);
+        const data = result.response.body.items.item;
+        setList(data);
       } else {
         console.log("응답 오류");
       }
@@ -44,19 +41,15 @@ export default function Main() {
   };
 
   useEffect(() => {
-    fetchList(code);
-  }, [code]);
+    fetchList(ctpvNm);
+  }, [ctpvNm]);
 
   return (
     <>
       <div className="flex flex-col gap-4">
-        <Card title="서울 어린이집 리스트"></Card>
+        <Card title="zzzzzzzzzzzzzzzzzzz"></Card>
         <Card>
-          <SelectButton
-            value={code}
-            onChange={handleChange}
-            options={options}
-          />
+          <SelectButton onChange={handleChange} options={options} />
         </Card>
         <Card>
           <Message

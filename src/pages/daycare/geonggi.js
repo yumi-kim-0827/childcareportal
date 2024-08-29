@@ -1,4 +1,5 @@
-//어린이집 > 경기
+//어린이집>경기
+//pages>daycare>geonggi
 import React, { useState, useEffect } from "react";
 //components
 import { Card } from "primereact/card";

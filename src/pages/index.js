@@ -1,3 +1,5 @@
+//메인
+//pages>index
 import React, { useState, useRef } from "react";
 //components
 import { Card } from "primereact/card";

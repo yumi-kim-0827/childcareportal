@@ -1,6 +1,6 @@
 const location = [
   {
-    sido: "서울특별시",
+    sido: "서울",
     sigungu: [
       { name: "강남구", code: "11680" },
       { name: "강동구", code: "11740" },
@@ -30,7 +30,7 @@ const location = [
     ],
   },
   {
-    sido: "부산광역시",
+    sido: "부산",
     sigungu: [
       { name: "중구", code: "26110" },
       { name: "서구", code: "26140" },
@@ -51,7 +51,7 @@ const location = [
     ],
   },
   {
-    sido: "대구광역시",
+    sido: "대구",
     sigungu: [
       { name: "중구", code: "27110" },
       { name: "동구", code: "27140" },
@@ -64,7 +64,7 @@ const location = [
     ],
   },
   {
-    sido: "인천광역시",
+    sido: "인천",
     sigungu: [
       { name: "중구", code: "28110" },
       { name: "동구", code: "28140" },
@@ -79,7 +79,7 @@ const location = [
     ],
   },
   {
-    sido: "경기도",
+    sido: "경기",
     sigungu: [
       { name: "수원시 장안구", code: "41111" },
       { name: "수원시 권선구", code: "41113" },
@@ -125,7 +125,7 @@ const location = [
     ],
   },
   {
-    sido: "강원도",
+    sido: "강원",
     sigungu: [
       { name: "춘천시", code: "42110" },
       { name: "원주시", code: "42130" },
@@ -148,7 +148,7 @@ const location = [
     ],
   },
   {
-    sido: "충청북도",
+    sido: "충북",
     sigungu: [
       { name: "청주시 상당구", code: "43111" },
       { name: "청주시 서원구", code: "43112" },
@@ -167,7 +167,7 @@ const location = [
     ],
   },
   {
-    sido: "충청남도",
+    sido: "충남",
     sigungu: [
       { name: "천안시 동남구", code: "44131" },
       { name: "천안시 서북구", code: "44133" },
@@ -188,7 +188,7 @@ const location = [
     ],
   },
   {
-    sido: "전라북도",
+    sido: "전북",
     sigungu: [
       { name: "전주시 완산구", code: "45111" },
       { name: "전주시 덕진구", code: "45113" },
@@ -208,7 +208,7 @@ const location = [
     ],
   },
   {
-    sido: "전라남도",
+    sido: "전남",
     sigungu: [
       { name: "목포시", code: "46110" },
       { name: "여수시", code: "46130" },
@@ -235,7 +235,7 @@ const location = [
     ],
   },
   {
-    sido: "경상북도",
+    sido: "경북",
     sigungu: [
       { name: "포항시 남구", code: "47111" },
       { name: "포항시 북구", code: "47113" },
@@ -264,7 +264,7 @@ const location = [
     ],
   },
   {
-    sido: "경상남도",
+    sido: "경남",
     sigungu: [
       { name: "창원시 의창구", code: "48121" },
       { name: "창원시 성산구", code: "48123" },
@@ -291,7 +291,7 @@ const location = [
     ],
   },
   {
-    sido: "제주특별자치도",
+    sido: "제주",
     sigungu: [
       { name: "제주시", code: "50110" },
       { name: "서귀포시", code: "50130" },

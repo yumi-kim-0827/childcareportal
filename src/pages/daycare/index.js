@@ -1,4 +1,5 @@
 //어린이집
+//pages>daycare>index
 import React, { useState, useEffect } from "react";
 //components
 import { Card } from "primereact/card";

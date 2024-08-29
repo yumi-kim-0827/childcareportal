@@ -1,4 +1,5 @@
-//어린이집 > 서울
+//어린이집>월별신규
+//pages>daycare>newmonthly
 import React, { useState, useEffect } from "react";
 //components
 import { Card } from "primereact/card";
@@ -44,6 +45,14 @@ export default function Main() {
   };
 
   useEffect(() => {
+    function formatDate(date) {
+      const MM = String(date.getUTCMonth() + 1).padStart(2, "0");
+      const dd = String(date.getUTCDate()).padStart(2, "0");
+      const YYYY = String(date.getUTCFullYear());
+
+      return `${YYYY}-${MM}-${dd}`;
+    }
+
     fetchList();
   }, [date]);
 
