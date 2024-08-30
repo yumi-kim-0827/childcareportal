@@ -20,6 +20,18 @@ export default function Main() {
     setCode(sigunCode);
   };
 
+  const viewLocationButton = (rowData) => {
+    return (
+      <Button
+        icon="pi pi-map-marker"
+        className="p-button-rounded"
+        onClick={() => {
+          setSelectDayCare(rowData);
+        }}
+      />
+    );
+  };
+
   const fetchList = async (code) => {
     try {
       const response = await fetch(
@@ -42,18 +54,6 @@ export default function Main() {
   useEffect(() => {
     fetchList(code);
   }, [code]);
-
-  const viewLocationButton = (rowData) => {
-    return (
-      <Button
-        icon="pi pi-map-marker"
-        className="p-button-rounded p-button-info"
-        onClick={() => {
-          setSelectDayCare(rowData);
-        }}
-      />
-    );
-  };
 
   return (
     <>

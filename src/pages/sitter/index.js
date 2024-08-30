@@ -9,14 +9,16 @@ import { SelectButton } from "primereact/selectbutton";
 import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
 import { Message } from "primereact/message";
+import { Button } from "primereact/button";
 //data
 import location from "@/src/data/location";
 
 import { Container as MapDiv, NaverMap, Marker } from "react-naver-maps";
 
 export default function Main() {
-  const [ctpvNm, setctpvNm] = useState("경기");
-  const [list, setList] = useState([]);
+  const [ctpvNm, setctpvNm] = useState("경기"); //선택한 시도명
+  const [list, setList] = useState([]); //리스트 렌더링
+  const [selectCenter, setSelectCenter] = useState(null);
 
   const options = location.map((district) => {
     return { label: district.sido, value: district.sido };
@@ -24,6 +26,18 @@ export default function Main() {
 
   const handleChange = (e) => {
     setctpvNm(e.value);
+  };
+
+  const viewLocationButton = (rowData) => {
+    return (
+      <Button
+        icon="pi pi-map-marker"
+        className="p-button-rounded"
+        onClick={() => {
+          setSelectCenter(rowData);
+        }}
+      ></Button>
+    );
   };
 
   const fetchList = async (ctpvNm) => {
@@ -82,10 +96,10 @@ export default function Main() {
               className="w-1/6"
             ></Column>
             <Column field="addr" header="주소"></Column>
-            <Column drtlnTelno="crtel" header="전화번호"></Column>
-            <Column field="crcapat" header="정원"></Column>
-            <Column field="fxno" header="팩스"></Column>
+            <Column field="rprsTelno" header="전화번호"></Column>
+            <Column field="fxno" header="팩스번호"></Column>
             <Column field="childCareInstNo" header="아이돌봄기관번호"></Column>
+            <Column body={viewLocationButton} header="지도위치"></Column>
           </DataTable>
         </Card>
         <Card>
@@ -94,10 +108,22 @@ export default function Main() {
               height: 400,
             }}
           >
-            <NaverMap>
-              <Marker defaultPosition={{ lat: 37.5666103, lng: 126.9783882 }} />
-              <Marker defaultPosition={{ lat: 38.5666103, lng: 126.9783882 }} />
-              <Marker defaultPosition={{ lat: 42.5666103, lng: 126.9783882 }} />
+            <NaverMap
+              center={
+                selectCenter
+                  ? { lat: selectCenter.lat, lng: selectCenter.lot }
+                  : { lat: 37.5665, lng: 126.978 }
+              }
+              zoom={10}
+            >
+              {selectCenter && (
+                <Marker
+                  position={{
+                    lat: selectCenter.lat,
+                    lng: selectCenter.lot,
+                  }}
+                />
+              )}
             </NaverMap>
           </MapDiv>
         </Card>
