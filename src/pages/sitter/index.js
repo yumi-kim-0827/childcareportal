@@ -1,7 +1,6 @@
 //돌봄
 //pages>sitter>index
 import React, { useState, useEffect } from "react";
-import dynamic from "next/dynamic";
 import Head from "next/head";
 //components
 import { Card } from "primereact/card";
@@ -67,7 +66,7 @@ export default function Main() {
       <Head>
         <script
           type="text/javascript"
-          src={`https://oapi.map.naver.com/openapi/v3/maps.js?ncpClientId=${process.env.NEXT_PUBLIC_NAVER_MAPS_API_KEY}`}
+          src={`https://oapi.map.naver.com/openapi/v3/maps.js?ncpClientId=${process.env.NEXT_PUBLIC_NAVERMAP_CLIENT_ID}`}
           async
           defer
         ></script>

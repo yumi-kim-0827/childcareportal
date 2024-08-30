@@ -77,7 +77,7 @@ export default function SideBar() {
                           className="p-ripple flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors w-full"
                         >
                           <i className="pi pi-chart-line mr-2"></i>
-                          <span className="font-medium">Reports</span>
+                          <span className="font-medium">지역별 산후조리원</span>
                           <i className="pi pi-chevron-down ml-auto mr-1"></i>
                           <Ripple />
                         </a>
@@ -97,34 +97,193 @@ export default function SideBar() {
                               className="p-ripple flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors w-full"
                             >
                               <i className="pi pi-chart-line mr-2"></i>
-                              <span className="font-medium">Revenue</span>
+                              <span className="font-medium">경기도</span>
                               <i className="pi pi-chevron-down ml-auto mr-1"></i>
                               <Ripple />
                             </a>
                           </StyleClass>
                           <ul className="list-none py-0 pl-3 pr-0 m-0 hidden overflow-y-hidden transition-all transition-duration-400 transition-ease-in-out">
-                            <li>
+                            <li
+                              onClick={() => {
+                                router.push("/");
+                              }}
+                            >
                               <a className="p-ripple flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors w-full">
-                                <i className="pi pi-table mr-2"></i>
-                                <span className="font-medium">View</span>
+                                <i className="pi pi-search mr-2"></i>
+                                <span className="font-medium">고양시</span>
                                 <Ripple />
                               </a>
                             </li>
                             <li>
                               <a className="p-ripple flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors w-full">
                                 <i className="pi pi-search mr-2"></i>
-                                <span className="font-medium">Search</span>
+                                <span className="font-medium">과천시</span>
                                 <Ripple />
                               </a>
                             </li>
+                            <li>
+                              <a className="p-ripple flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors w-full">
+                                <i className="pi pi-search mr-2"></i>
+                                <span className="font-medium">광명시</span>
+                                <Ripple />
+                              </a>
+                            </li>
+                            <li>
+                              <a className="p-ripple flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors w-full">
+                                <i className="pi pi-search mr-2"></i>
+                                <span className="font-medium">광주시</span>
+                                <Ripple />
+                              </a>
+                            </li>
+                            <li>
+                              <a className="p-ripple flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors w-full">
+                                <i className="pi pi-search mr-2"></i>
+                                <span className="font-medium">구리시</span>
+                                <Ripple />
+                              </a>
+                            </li>
+                            <li>
+                              <a className="p-ripple flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors w-full">
+                                <i className="pi pi-search mr-2"></i>
+                                <span className="font-medium">군포시</span>
+                                <Ripple />
+                              </a>
+                            </li>
+                            <li>
+                              <a className="p-ripple flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors w-full">
+                                <i className="pi pi-search mr-2"></i>
+                                <span className="font-medium">김포시</span>
+                                <Ripple />
+                              </a>
+                            </li>
+                            <li>
+                              <a className="p-ripple flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors w-full">
+                                <i className="pi pi-search mr-2"></i>
+                                <span className="font-medium">남양주시</span>
+                                <Ripple />
+                              </a>
+                            </li>
+                            <li>
+                              <a className="p-ripple flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors w-full">
+                                <i className="pi pi-search mr-2"></i>
+                                <span className="font-medium">동두천시</span>
+                                <Ripple />
+                              </a>
+                            </li>
+                            <li>
+                              <a className="p-ripple flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors w-full">
+                                <i className="pi pi-search mr-2"></i>
+                                <span className="font-medium">부천시</span>
+                                <Ripple />
+                              </a>
+                            </li>
+                            <li>
+                              <a className="p-ripple flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors w-full">
+                                <i className="pi pi-search mr-2"></i>
+                                <span className="font-medium">성남시</span>
+                                <Ripple />
+                              </a>
+                            </li>
+                            <li>
+                              <a className="p-ripple flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors w-full">
+                                <i className="pi pi-search mr-2"></i>
+                                <span className="font-medium">수원시</span>
+                                <Ripple />
+                              </a>
+                            </li>
+                            <li>
+                              <a className="p-ripple flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors w-full">
+                                <i className="pi pi-search mr-2"></i>
+                                <span className="font-medium">시흥시</span>
+                                <Ripple />
+                              </a>
+                            </li>
+                            <li>
+                              <a className="p-ripple flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors w-full">
+                                <i className="pi pi-search mr-2"></i>
+                                <span className="font-medium">안산시</span>
+                                <Ripple />
+                              </a>
+                            </li>
+                            <li>
+                              <a className="p-ripple flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors w-full">
+                                <i className="pi pi-search mr-2"></i>
+                                <span className="font-medium">안성시</span>
+                                <Ripple />
+                              </a>
+                            </li>
+                            <li>
+                              <a className="p-ripple flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors w-full">
+                                <i className="pi pi-search mr-2"></i>
+                                <span className="font-medium">안양시</span>
+                                <Ripple />
+                              </a>
+                            </li>
+                            <li>
+                              <a className="p-ripple flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors w-full">
+                                <i className="pi pi-search mr-2"></i>
+                                <span className="font-medium">양주시</span>
+                                <Ripple />
+                              </a>
+                            </li>
+                            <li>
+                              <a className="p-ripple flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors w-full">
+                                <i className="pi pi-search mr-2"></i>
+                                <span className="font-medium">여주시</span>
+                                <Ripple />
+                              </a>
+                            </li>
+                            <li>
+                              <a className="p-ripple flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors w-full">
+                                <i className="pi pi-search mr-2"></i>
+                                <span className="font-medium">오산시</span>
+                                <Ripple />
+                              </a>
+                            </li>
+                            <li>
+                              <a className="p-ripple flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors w-full">
+                                <i className="pi pi-search mr-2"></i>
+                                <span className="font-medium">용인시</span>
+                                <Ripple />
+                              </a>
+                            </li>
+                            <li>
+                              <a className="p-ripple flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors w-full">
+                                <i className="pi pi-search mr-2"></i>
+                                <span className="font-medium">의왕시</span>
+                                <Ripple />
+                              </a>
+                            </li>
+                            <li>
+                              <a className="p-ripple flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors w-full">
+                                <i className="pi pi-search mr-2"></i>
+                                <span className="font-medium">의정부시</span>
+                                <Ripple />
+                              </a>
+                            </li>
+                            <li>
+                              <a className="p-ripple flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors w-full">
+                                <i className="pi pi-search mr-2"></i>
+                                <span className="font-medium">이천시</span>
+                                <Ripple />
+                              </a>
+                            </li>
+                            <li>
+                              <a className="p-ripple flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors w-full">
+                                <i className="pi pi-search mr-2"></i>
+                                <span className="font-medium">파주시</span>
+                                <Ripple />
+                              </a>
+                            </li>
+                            <li>
+                              <a className="p-ripple flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors w-full">
+                                <i className="pi pi-search mr-2"></i>
+                                <span className="font-medium">평택시</span>
+                                <Ripple />
+                              </a>
+                            </li>
+                            <li></li>
                           </ul>
-                        </li>
-                        <li>
-                          <a className="p-ripple flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors w-full">
-                            <i className="pi pi-chart-line mr-2"></i>
-                            <span className="font-medium">Expenses</span>
-                            <Ripple />
-                          </a>
                         </li>
                       </ul>
                     </li>
