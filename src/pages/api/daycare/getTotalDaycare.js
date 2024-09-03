@@ -11,9 +11,6 @@ export default async function getTotalDaycare(req, res) {
     try {
       const response = await fetch(`${URI}request?key=${KEY}&arcode=${arcode}`);
 
-      // 응답의 Content-Type 헤더를 확인
-      const contentType = response.headers.get("content-type");
-
       // 응답 본문을 텍스트 형태로 읽어옴
       const text = await response.text();
 

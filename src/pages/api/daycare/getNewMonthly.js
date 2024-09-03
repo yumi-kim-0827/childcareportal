@@ -9,18 +9,15 @@ export default async function getNewMonthly(req, res) {
   if (req.method === "GET") {
     const { yyyymm } = req.query; // 쿼리 파라미터에서 date 값을 가져옴
     try {
-      console.log(date);
       const response = await fetch(`${URI}request?key=${KEY}&yyyymm=${yyyymm}`);
-
-      // 응답의 Content-Type 헤더를 확인
-      const contentType = response.headers.get("content-type");
-
+      console.log(response);
       // 응답 본문을 텍스트 형태로 읽어옴
       const text = await response.text();
 
       // XML 텍스트를 JavaScript 객체로 변환
       const data = await parseStringPromise(text);
       // 변환된 데이터를 JSON 형식으로 클라이언트 응답 보냄
+      console.log(response);
       res.status(200).json(data);
     } catch (error) {
       console.error(error);
