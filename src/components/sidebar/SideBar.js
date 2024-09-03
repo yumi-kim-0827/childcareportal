@@ -114,91 +114,109 @@ export default function SideBar() {
                                 <Ripple />
                               </a>
                             </li>
-                            <li>
-                              <a className="p-ripple flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors w-full">
-                                <i className="pi pi-search mr-2"></i>
-                                <span className="font-medium">과천시</span>
-                                <Ripple />
-                              </a>
-                            </li>
-                            <li>
+                            <li
+                              onClick={() => {
+                                router.push(
+                                  "/baby/mothercare/geongggi/gwangmyeong"
+                                );
+                              }}
+                            >
                               <a className="p-ripple flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors w-full">
                                 <i className="pi pi-search mr-2"></i>
                                 <span className="font-medium">광명시</span>
                                 <Ripple />
                               </a>
                             </li>
-                            <li>
-                              <a className="p-ripple flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors w-full">
-                                <i className="pi pi-search mr-2"></i>
-                                <span className="font-medium">광주시</span>
-                                <Ripple />
-                              </a>
-                            </li>
-                            <li>
-                              <a className="p-ripple flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors w-full">
-                                <i className="pi pi-search mr-2"></i>
-                                <span className="font-medium">구리시</span>
-                                <Ripple />
-                              </a>
-                            </li>
-                            <li>
+                            <li
+                              onClick={() => {
+                                router.push("/baby/mothercare/geongggi/gunpo");
+                              }}
+                            >
                               <a className="p-ripple flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors w-full">
                                 <i className="pi pi-search mr-2"></i>
                                 <span className="font-medium">군포시</span>
                                 <Ripple />
                               </a>
                             </li>
-                            <li>
+                            <li
+                              onClick={() => {
+                                router.push("/baby/mothercare/geongggi/gimpo");
+                              }}
+                            >
                               <a className="p-ripple flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors w-full">
                                 <i className="pi pi-search mr-2"></i>
                                 <span className="font-medium">김포시</span>
                                 <Ripple />
                               </a>
                             </li>
-                            <li>
+                            <li
+                              onClick={() => {
+                                router.push(
+                                  "/baby/mothercare/geongggi/namyongjoo"
+                                );
+                              }}
+                            >
                               <a className="p-ripple flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors w-full">
                                 <i className="pi pi-search mr-2"></i>
                                 <span className="font-medium">남양주시</span>
                                 <Ripple />
                               </a>
                             </li>
-                            <li>
-                              <a className="p-ripple flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors w-full">
-                                <i className="pi pi-search mr-2"></i>
-                                <span className="font-medium">동두천시</span>
-                                <Ripple />
-                              </a>
-                            </li>
-                            <li>
+                            <li
+                              onClick={() => {
+                                router.push(
+                                  "/baby/mothercare/geongggi/bucheon"
+                                );
+                              }}
+                            >
                               <a className="p-ripple flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors w-full">
                                 <i className="pi pi-search mr-2"></i>
                                 <span className="font-medium">부천시</span>
                                 <Ripple />
                               </a>
                             </li>
-                            <li>
+                            <li
+                              onClick={() => {
+                                router.push(
+                                  "/baby/mothercare/geongggi/seongnam"
+                                );
+                              }}
+                            >
                               <a className="p-ripple flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors w-full">
                                 <i className="pi pi-search mr-2"></i>
                                 <span className="font-medium">성남시</span>
                                 <Ripple />
                               </a>
                             </li>
-                            <li>
+                            <li
+                              onClick={() => {
+                                router.push("/baby/mothercare/geongggi/suwon");
+                              }}
+                            >
                               <a className="p-ripple flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors w-full">
                                 <i className="pi pi-search mr-2"></i>
                                 <span className="font-medium">수원시</span>
                                 <Ripple />
                               </a>
                             </li>
-                            <li>
+                            <li
+                              onClick={() => {
+                                router.push(
+                                  "/baby/mothercare/geongggi/siheung"
+                                );
+                              }}
+                            >
                               <a className="p-ripple flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors w-full">
                                 <i className="pi pi-search mr-2"></i>
                                 <span className="font-medium">시흥시</span>
                                 <Ripple />
                               </a>
                             </li>
-                            <li>
+                            <li
+                              onClick={() => {
+                                router.push("/baby/mothercare/geongggi/ansan");
+                              }}
+                            >
                               <a className="p-ripple flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors w-full">
                                 <i className="pi pi-search mr-2"></i>
                                 <span className="font-medium">안산시</span>
