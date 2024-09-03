@@ -14,9 +14,9 @@ export default function Main() {
 
   function formatDate(yyyymm) {
     if (!yyyymm) return "";
-    const MM = String(yyyymm.getUTCMonth() + 1).padStart(2, "0");
+    const MM = String(yyyymm.getUTCMonth() + 2).padStart(2, "0");
     const YYYY = String(yyyymm.getUTCFullYear());
-
+    console.log(MM);
     return `${YYYY}${MM}`;
   }
 
@@ -31,7 +31,6 @@ export default function Main() {
       if (response.ok) {
         const result = await response.json();
         const data = result.response.item;
-        console.log(data);
         setList(data);
       } else {
         const errorText = await response.text(); // 에러 메시지 확인
@@ -54,6 +53,7 @@ export default function Main() {
       <div className="flex flex-col gap-4">
         <Card title="월별 신규 오픈"></Card>
         <Card>
+          <p>캘린더에서 찾으신 월별을 선택하세요.</p>
           <Calendar
             value={yyyymm}
             onChange={(e) => {
@@ -62,13 +62,18 @@ export default function Main() {
             }}
             view="month"
             dateFormat="yy/mm"
+            placeholder="📆 click"
           />
         </Card>
         <Card>
-          <Message
-            text={`신규오픈 어린이집 총 수 ${list.length} (${yyyymm})`}
-            className="mb-2"
-          />
+          {list?.length > 0 ? (
+            <Message
+              text={`신규오픈 어린이집 총 수 ${list.length} (${yyyymm})`}
+              className="mb-2"
+            />
+          ) : (
+            ""
+          )}
           <DataTable
             value={list}
             paginator
@@ -80,6 +85,7 @@ export default function Main() {
             <Column field="craddr" header="주소"></Column>
             <Column field="crtel" header="전화번호"></Column>
             <Column field="crcapat" header="정원"></Column>
+            <Column field="frstcnfmdt" header="개설 일자"></Column>
             <Column field="crfax" header="팩스"></Column>
             <Column field="crhome" header="홈페이지"></Column>
           </DataTable>
