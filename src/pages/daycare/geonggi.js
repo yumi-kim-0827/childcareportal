@@ -1,6 +1,7 @@
 //어린이집>경기
 //pages>daycare>geonggi
 import React, { useState, useEffect } from "react";
+import Head from "next/head";
 //components
 import { Card } from "primereact/card";
 import { SelectButton } from "primereact/selectbutton";
@@ -51,6 +52,31 @@ export default function Main() {
 
   return (
     <>
+      <Head>
+        <title>경기 어린이집 정보 리스트 | 지역별 어린이집 찾기</title>
+        <meta
+          name="description"
+          content="경기에 있는 어린이집 정보를 확인하세요. 지역별로 정리된 어린이집 리스트에서 위치, 연락처, 정원 등의 세부 정보를 쉽게 찾을 수 있습니다."
+        />
+        <meta
+          name="keywords"
+          content="경기 어린이집, 경기 어린이집 리스트, 경기도 어린이집 정보, 경기 어린이집 찾기, 어린이집 연락처, 어린이집 위치"
+        />
+        <meta name="author" content="childcareportal" />
+        <meta
+          property="og:title"
+          content="경기 어린이집 정보 리스트 | 지역별 어린이집 찾기"
+        />
+        <meta
+          property="og:description"
+          content="경기 지역의 어린이집을 검색하고, 위치, 연락처, 정원 등의 세부 정보를 확인하세요."
+        />
+        <meta
+          property="og:url"
+          content="https://www.childcareportal.co.kr/daycare/seoul"
+        />
+        <meta property="og:type" content="website" />
+      </Head>
       <div className="flex flex-col gap-4">
         <Card title="경기 어린이집 리스트"></Card>
         <Card>

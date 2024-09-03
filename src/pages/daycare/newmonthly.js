@@ -1,6 +1,7 @@
 //어린이집>월별신규
 //pages>daycare>newmonthly
 import React, { useState, useEffect } from "react";
+import Head from "next/head";
 //components
 import { Card } from "primereact/card";
 import { Calendar } from "primereact/calendar";
@@ -50,6 +51,31 @@ export default function Main() {
 
   return (
     <>
+      <Head>
+        <title>월별 신규 오픈 어린이집 리스트 | 최신 어린이집 정보</title>
+        <meta
+          name="description"
+          content="매월 새로 오픈하는 어린이집 정보를 확인하세요. 지역별로 최신 어린이집을 검색하고, 상세한 정보와 연락처를 알아보세요. 부모님들을 위한 신뢰할 수 있는 어린이집 정보 제공."
+        />
+        <meta
+          name="keywords"
+          content="어린이집, 신규 어린이집, 월별 어린이집, 새로 오픈한 어린이집, 최신 어린이집 정보, 지역별 어린이집"
+        />
+        <meta name="author" content="childcareportal" />
+        <meta
+          property="og:title"
+          content="월별 신규 오픈 어린이집 리스트 | 최신 어린이집 정보"
+        />
+        <meta
+          property="og:description"
+          content="매월 새롭게 오픈한 어린이집을 검색하고, 상세한 정보를 확인하세요. 부모님들을 위한 신뢰할 수 있는 최신 어린이집 정보 제공."
+        />
+        <meta
+          property="og:url"
+          content="https://www.childcareportal.co.kr/daycare/newmonthly"
+        />
+        <meta property="og:type" content="website" />
+      </Head>
       <div className="flex flex-col gap-4">
         <Card title="월별 신규 오픈"></Card>
         <Card>
