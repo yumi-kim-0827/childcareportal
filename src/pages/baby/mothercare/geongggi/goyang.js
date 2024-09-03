@@ -1,5 +1,5 @@
 //신생아>산후조리>경기
-//pages>baby>mother>geonggi
+//pages>baby>mothercare>geonggi>goyang.js
 import React, { useState, useEffect } from "react";
 //components
 import { Card } from "primereact/card";
@@ -9,22 +9,26 @@ import { Column } from "primereact/column";
 import { Message } from "primereact/message";
 
 export default function Main() {
-  const fetchList = async (code) => {
+  const [list, setList] = useState([]);
+
+  const fetchList = async () => {
+    const sigun_nm = "고양시";
     try {
       const response = await fetch(
-        `/api/daycare/getTotalDaycare?arcode=${code}`
+        `/api/baby/getMotherCare?sigun_nm=${sigun_nm}`
       );
 
       if (response.ok) {
         const result = await response.json();
-        const data = result.response.item;
-        const formedData = transformDayCareData(data);
-        setList(formedData);
+        const data = result.PostnatalCare[1].row;
+        setList(data);
       } else {
-        console.log("응답 오류");
+        const errorText = await response.text(); // 에러 메시지 확인
+        console.log("응답 오류:", errorText);
+        res.status(500).json({ error: errorText });
       }
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   };
 
@@ -36,13 +40,6 @@ export default function Main() {
     <>
       <div className="flex flex-col gap-4">
         <Card title="경기 고양시 산후조리원 리스트"></Card>
-        <Card>
-          <SelectButton
-            value={code}
-            onChange={handleChange}
-            options={options}
-          />
-        </Card>
         <Card>
           <Message
             severity="success"

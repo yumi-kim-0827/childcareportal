@@ -37,7 +37,9 @@ export default function Main() {
         console.log(result);
         setNewList(data);
       } else {
-        console.log("응답 오류");
+        const errorText = await response.text(); // 에러 메시지 확인
+        console.log("응답 오류:", errorText);
+        res.status(500).json({ error: errorText });
       }
     } catch (error) {
       console.log(error);

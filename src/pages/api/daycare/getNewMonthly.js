@@ -18,11 +18,6 @@ export default async function getNewMonthly(req, res) {
       // 응답 본문을 텍스트 형태로 읽어옴
       const text = await response.text();
 
-      // 응답의 Content-Type이 application/xml이 아니면 500 상태 코드 반환
-      if (!contentType || !contentType.includes("application/xml")) {
-        return res.status(500).json({ error: "Invalid response format" });
-      }
-
       // XML 텍스트를 JavaScript 객체로 변환
       const data = await parseStringPromise(text);
       // 변환된 데이터를 JSON 형식으로 클라이언트 응답 보냄

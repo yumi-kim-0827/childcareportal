@@ -5,20 +5,13 @@ export default async function getMotherCare(req, res) {
   const KEY = process.env.NEXT_PUBLIC_GYENGGGIMOTHERCARE_KEY;
 
   if (req.method === "GET") {
-    const { ctpvNm } = req.query;
+    const { sigun_nm } = req.query;
     try {
       const response = await fetch(
-        `https://apis.data.go.kr/1383000/idis/serviceInstitutionService/getServiceInstitutionList?serviceKey=${KEY}&pageNo=1&type=json&numOfRows=100&ctpvNm=${encodeURIComponent(
-          ctpvNm
+        `https://openapi.gg.go.kr/PostnatalCare?key=${KEY}&type=json&sigun_nm=${encodeURIComponent(
+          sigun_nm
         )}`
       );
-
-      // 응답의 Content-Type 확인 (여기서는 JSON을 기대함)
-      const contentType = response.headers.get("content-type");
-
-      if (!contentType || !contentType.includes("application/json")) {
-        return res.status(500).json({ error: "Invalid response format" });
-      }
 
       const data = await response.json();
       // 변환된 데이터를 JSON 형식으로 클라이언트에게 보냄
