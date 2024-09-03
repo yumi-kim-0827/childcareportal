@@ -1,4 +1,4 @@
-//신생아>산후조리>경기
+//신생아>산후조리>경기>고양시
 //pages>baby>mothercare>geonggi>goyang.js
 import React, { useState, useEffect } from "react";
 //components
@@ -21,7 +21,10 @@ export default function Main() {
       if (response.ok) {
         const result = await response.json();
         const data = result.PostnatalCare[1].row;
-        setList(data);
+        const filteredData = data.filter(
+          (item) => item.BSN_STATE_NM !== "폐업" //폐업인 산후조리원은 제외하여 필터링
+        );
+        setList(filteredData);
       } else {
         const errorText = await response.text(); // 에러 메시지 확인
         console.log("응답 오류:", errorText);
@@ -53,12 +56,21 @@ export default function Main() {
             rowsPerPageOptions={[5, 10, 25, 50]}
             tableStyle={{ minWidth: "50rem" }}
           >
-            <Column field="crname" header="이름" className="w-1/6"></Column>
-            <Column field="craddr" header="주소"></Column>
-            <Column field="crtel" header="전화번호"></Column>
-            <Column field="crcapat" header="정원"></Column>
-            <Column field="crfax" header="팩스"></Column>
-            <Column field="crhome" header="홈페이지"></Column>
+            <Column
+              field="BIZPLC_NM"
+              header="산후조리원 이름"
+              className="w-1/6"
+            ></Column>
+            <Column field="REFINE_ROADNM_ADDR" header="주소"></Column>
+            <Column field="LICENSG_DE" header="인허가일자"></Column>
+            <Column field="PWNMRM_AR" header="임산부실면적(㎡)"></Column>
+            <Column field="INFANTRM_AR" header="영유아실면적(㎡)"></Column>
+            <Column field="PWNM_PSN_CAPA_CNT" header="임산부정원수"></Column>
+            <Column field="INFANT_PSN_CAPA" header="영유아정원(명)"></Column>
+            <Column field="NURSE_CNT" header="간호사수(명)"></Column>
+            <Column field="NURSAID_CNT" header="간호조무사수(명)"></Column>
+            <Column field="NUTRST_CNT" header="영양사수(명)"></Column>
+            <Column field="BULDNG_FLOOR_CNT" header="건물층수"></Column>
           </DataTable>
         </Card>
       </div>

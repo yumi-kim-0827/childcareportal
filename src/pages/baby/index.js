@@ -1,4 +1,4 @@
-//신생아>산후조리
+//신생아
 //pages>baby>mothercare>index.js
 import React, { useState, useEffect } from "react";
 //components
@@ -8,7 +8,7 @@ export default function Main() {
   return (
     <>
       <div className="flex flex-col gap-4">
-        <Card title="경기도">인덱스</Card>
+        <Card title="경기도">baby인덱스</Card>
       </div>
     </>
   );
