@@ -1,6 +1,7 @@
 import React, { useState, useRef } from "react";
 import { useRouter } from "next/router";
 //components
+import { Tag } from "primereact/tag";
 import { Ripple } from "primereact/ripple";
 import { StyleClass } from "primereact/styleclass";
 
@@ -22,9 +23,15 @@ export default function SideBar() {
         >
           <div className="flex flex-column h-full">
             <div className="flex align-items-center justify-content-between px-4 pt-3 flex-shrink-0">
-              <span className="inline-flex align-items-center gap-2">
+              <span
+                className="inline-flex align-items-center gap-2 cursor-pointer"
+                onClick={() => {
+                  router.push("/");
+                }}
+              >
                 <span className="font-semibold text-2xl text-primary">
-                  Your Logo
+                  차일드케어포털
+                  <Tag value="childcareportal"></Tag>
                 </span>
               </span>
             </div>

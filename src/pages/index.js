@@ -1,16 +1,59 @@
 //메인
 //pages>index
-import React, { useState, useRef } from "react";
+import React, { useEffect, useState } from "react";
 import { Button } from "primereact/button";
 import Image from "next/image";
 import { useRouter } from "next/router";
 //components
 import { Card } from "primereact/card";
 import { Carousel } from "primereact/carousel";
+import { Accordion, AccordionTab } from "primereact/accordion";
 import { Tag } from "primereact/tag";
 
 export default function Main() {
+  const [list, setList] = useState([]);
   const router = useRouter();
+  const today = new Date();
+  console.log(today);
+
+  function formatDate(today) {
+    if (!today) return "";
+    const MM = String(today.getUTCMonth() + 1).padStart(2, "0");
+    const YYYY = String(today.getUTCFullYear());
+    console.log(MM);
+    return `${YYYY}${MM}`;
+  }
+
+  const fetchList = async (yyyymm) => {
+    if (!yyyymm) return; //date가 null이면 fetch하지 않음
+
+    try {
+      const response = await fetch(
+        `/api/daycare/getNewMonthly?yyyymm=${yyyymm}`
+      );
+
+      if (response.ok) {
+        const result = await response.json();
+        const data = result.response.item;
+        setList(data);
+        console.log(data);
+      } else {
+        const errorText = await response.text(); // 에러 메시지 확인
+        console.log("응답 오류:", errorText);
+        res.status(500).json({ error: errorText });
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    if (today) {
+      const yyyymm = formatDate(today);
+      fetchList(yyyymm);
+    }
+  }, []);
+
   const responsiveOptions = [
     {
       breakpoint: "1400px",
@@ -122,6 +165,28 @@ export default function Main() {
           autoplayInterval={3000}
           itemTemplate={itemTemplate}
         />
+      </Card>
+      <Card>
+        <div className="flex gap-2 justi">
+          <Card title="이번달 신규 어린이집" className="flex-1">
+            <div className="h-[500px] overflow-y-scroll">
+              <Accordion>
+                {list.map((item, id) => {
+                  return (
+                    <AccordionTab header={`${item.crname}`} key={id}>
+                      <Tag value="new"></Tag>
+                      <p>주소 : {item.craddr}</p>
+                      <p>정원 : {item.crcapat}</p>
+                    </AccordionTab>
+                  );
+                })}
+              </Accordion>
+            </div>
+          </Card>
+          <Card title="이번달 신규 어린이집" className="flex-1">
+            ㄴㄴㄴㄴ
+          </Card>
+        </div>
       </Card>
     </>
   );
