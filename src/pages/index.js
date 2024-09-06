@@ -11,7 +11,10 @@ import { Accordion, AccordionTab } from "primereact/accordion";
 import { Tag } from "primereact/tag";
 
 export default function Main() {
-  const [list, setList] = useState([]);
+  //월별 신규 어린이집
+  const [listNewMonthlyCare, setListNewMonthlyCare] = useState([]);
+  //경기 운영중인 산후조리원
+  const [listGeonggiMother, setListGeonggiMother] = useState([]);
   const router = useRouter();
   const today = new Date();
   console.log(today);
@@ -24,8 +27,9 @@ export default function Main() {
     return `${YYYY}${MM}`;
   }
 
-  const fetchList = async (yyyymm) => {
-    if (!yyyymm) return; //date가 null이면 fetch하지 않음
+  //월별 신규 어린이집 fetch
+  const fetchListNewMonthlyCare = async (yyyymm) => {
+    if (!yyyymm) return;
 
     try {
       const response = await fetch(
@@ -35,7 +39,7 @@ export default function Main() {
       if (response.ok) {
         const result = await response.json();
         const data = result.response.item;
-        setList(data);
+        setListNewMonthlyCare(data);
         console.log(data);
       } else {
         const errorText = await response.text(); // 에러 메시지 확인
@@ -50,8 +54,37 @@ export default function Main() {
   useEffect(() => {
     if (today) {
       const yyyymm = formatDate(today);
-      fetchList(yyyymm);
+      fetchListNewMonthlyCare(yyyymm);
     }
+  }, []);
+
+  //경기 운영중인 산후조리원 fetch
+  const fetchList = async () => {
+    const sigun_nm = "";
+    try {
+      const response = await fetch(
+        `/api/baby/getMotherCare?sigun_nm=${sigun_nm}`
+      );
+
+      if (response.ok) {
+        const result = await response.json();
+        const data = result.PostnatalCare[1].row;
+        const filteredData = data.filter(
+          (item) => item.BSN_STATE_NM !== "폐업" //폐업인 산후조리원은 제외하여 필터링
+        );
+        setListGeonggiMother(filteredData);
+      } else {
+        const errorText = await response.text(); // 에러 메시지 확인
+        console.log("응답 오류:", errorText);
+        res.status(500).json({ error: errorText });
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  useEffect(() => {
+    fetchList();
   }, []);
 
   const responsiveOptions = [
@@ -151,6 +184,9 @@ export default function Main() {
       </div>
     );
   };
+
+  console.log(listGeonggiMother);
+
   return (
     <>
       <Card title="어린이집 찾기">메인</Card>
@@ -171,7 +207,7 @@ export default function Main() {
           <Card title="이번달 신규 어린이집" className="flex-1">
             <div className="h-[500px] overflow-y-scroll">
               <Accordion>
-                {list.map((item, id) => {
+                {listNewMonthlyCare.map((item, id) => {
                   return (
                     <AccordionTab header={`${item.crname}`} key={id}>
                       <Tag value="new"></Tag>
@@ -183,8 +219,23 @@ export default function Main() {
               </Accordion>
             </div>
           </Card>
-          <Card title="이번달 신규 어린이집" className="flex-1">
-            ㄴㄴㄴㄴ
+          <Card title="경기도 운영 중인 산후조리원" className="flex-1">
+            <div className="h-[500px] overflow-y-scroll">
+              <Accordion>
+                {listGeonggiMother.map((item, id) => {
+                  return (
+                    <AccordionTab
+                      header={`${item.SIGUN_NM} - ${item.BIZPLC_NM}`}
+                      key={id}
+                    >
+                      <Tag value="new"></Tag>
+                      <p>주소 : {item.REFINE_LOTNO_ADDR}</p>
+                      <p>임산부 정원수: {item.PWNM_PSN_CAPA_CNT}</p>
+                    </AccordionTab>
+                  );
+                })}
+              </Accordion>
+            </div>
           </Card>
         </div>
       </Card>

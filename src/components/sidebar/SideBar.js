@@ -230,42 +230,33 @@ export default function SideBar() {
                                 <Ripple />
                               </a>
                             </li>
-                            <li>
-                              <a className="p-ripple flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors w-full">
-                                <i className="pi pi-search mr-2"></i>
-                                <span className="font-medium">안성시</span>
-                                <Ripple />
-                              </a>
-                            </li>
-                            <li>
+                            <li
+                              onClick={() => {
+                                router.push("/baby/mothercare/geongggi/anyang");
+                              }}
+                            >
                               <a className="p-ripple flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors w-full">
                                 <i className="pi pi-search mr-2"></i>
                                 <span className="font-medium">안양시</span>
                                 <Ripple />
                               </a>
                             </li>
-                            <li>
+                            <li
+                              onClick={() => {
+                                router.push("/baby/mothercare/geongggi/yangju");
+                              }}
+                            >
                               <a className="p-ripple flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors w-full">
                                 <i className="pi pi-search mr-2"></i>
                                 <span className="font-medium">양주시</span>
                                 <Ripple />
                               </a>
                             </li>
-                            <li>
-                              <a className="p-ripple flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors w-full">
-                                <i className="pi pi-search mr-2"></i>
-                                <span className="font-medium">여주시</span>
-                                <Ripple />
-                              </a>
-                            </li>
-                            <li>
-                              <a className="p-ripple flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors w-full">
-                                <i className="pi pi-search mr-2"></i>
-                                <span className="font-medium">오산시</span>
-                                <Ripple />
-                              </a>
-                            </li>
-                            <li>
+                            <li
+                              onClick={() => {
+                                router.push("/baby/mothercare/geongggi/yongin");
+                              }}
+                            >
                               <a className="p-ripple flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors w-full">
                                 <i className="pi pi-search mr-2"></i>
                                 <span className="font-medium">용인시</span>
