@@ -12,6 +12,7 @@ export default function SideBar() {
   const btnRef3 = useRef(null);
   const btnRef4 = useRef(null);
   const btnRef5 = useRef(null);
+  const btnRef6 = useRef(null);
 
   return (
     <div className="fixed card z-50">
@@ -104,7 +105,40 @@ export default function SideBar() {
                               className="p-ripple flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors w-full"
                             >
                               <i className="pi pi-chart-line mr-2"></i>
-                              <span className="font-medium">경기도</span>
+                              <span className="font-medium">서울</span>
+                              <i className="pi pi-chevron-down ml-auto mr-1"></i>
+                              <Ripple />
+                            </a>
+                          </StyleClass>
+                          <ul className="list-none py-0 pl-3 pr-0 m-0 hidden overflow-y-hidden transition-all transition-duration-400 transition-ease-in-out">
+                            <li
+                              onClick={() => {
+                                router.push("/baby/mothercare/seoul/gangnam");
+                              }}
+                            >
+                              <a className="p-ripple flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors w-full">
+                                <i className="pi pi-search mr-2"></i>
+                                <span className="font-medium">강남</span>
+                                <Ripple />
+                              </a>
+                            </li>
+                          </ul>
+                        </li>
+                        <li>
+                          <StyleClass
+                            nodeRef={btnRef4}
+                            selector="@next"
+                            enterClassName="hidden"
+                            enterActiveClassName="slidedown"
+                            leaveToClassName="hidden"
+                            leaveActiveClassName="slideup"
+                          >
+                            <a
+                              ref={btnRef4}
+                              className="p-ripple flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors w-full"
+                            >
+                              <i className="pi pi-chart-line mr-2"></i>
+                              <span className="font-medium">경기</span>
                               <i className="pi pi-chevron-down ml-auto mr-1"></i>
                               <Ripple />
                             </a>
@@ -298,7 +332,6 @@ export default function SideBar() {
                                 <Ripple />
                               </a>
                             </li>
-                            <li></li>
                           </ul>
                         </li>
                       </ul>
@@ -343,7 +376,7 @@ export default function SideBar() {
               <ul className="list-none p-3 m-0">
                 <li>
                   <StyleClass
-                    nodeRef={btnRef4}
+                    nodeRef={btnRef6}
                     selector="@next"
                     enterClassName="hidden"
                     enterActiveClassName="slidedown"
@@ -351,7 +384,7 @@ export default function SideBar() {
                     leaveActiveClassName="slideup"
                   >
                     <div
-                      ref={btnRef4}
+                      ref={btnRef6}
                       className="p-ripple p-3 flex align-items-center justify-content-between text-600 cursor-pointer"
                     >
                       <span className="font-medium">어린이집</span>

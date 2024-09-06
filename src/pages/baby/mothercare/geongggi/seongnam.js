@@ -42,7 +42,9 @@ export default function Main() {
   return (
     <>
       <div className="flex flex-col gap-4">
-        <Card title="경기 성남시 산후조리원 리스트"></Card>
+        <Card title="경기 성남시 산후조리원 리스트">
+          인허가 받은 산후조리원 리스트
+        </Card>
         <Card>
           <Message
             severity="success"
