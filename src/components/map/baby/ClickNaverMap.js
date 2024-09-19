@@ -1,12 +1,12 @@
 import { useEffect, useRef, useState } from "react";
 
-const NaverMap = ({ item }) => {
+const ClickNaverMap = ({ item }) => {
   const mapRef = useRef(null);
   const [map, setMap] = useState(null);
   const [scriptLoaded, setScriptLoaded] = useState(false);
   const [markers, setMarkers] = useState([]); //지도 마커 상태관리
   const KEY = process.env.NEXT_PUBLIC_NAVERMAP_CLIENT_ID;
-  console.log(item);
+
   useEffect(() => {
     const handleScriptLoad = () => {
       if (window.naver && window.naver.maps) {
@@ -47,8 +47,9 @@ const NaverMap = ({ item }) => {
     if (!map || !scriptLoaded || !item) return;
 
     if (window.naver && window.naver.maps && window.naver.maps.Service) {
-      const address = item.craddr;
-      const name = item.crname;
+      const address = item.RDNWHLADDR;
+
+      const name = item.BPLCNM;
       naver.maps.Service.geocode({ query: address }, (status, response) => {
         if (status === naver.maps.Service.Status.ERROR) {
           console.error("Geocode error:", response);
@@ -99,4 +100,4 @@ const NaverMap = ({ item }) => {
   );
 };
 
-export default NaverMap;
+export default ClickNaverMap;

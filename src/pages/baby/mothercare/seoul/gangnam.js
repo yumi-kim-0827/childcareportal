@@ -5,14 +5,16 @@ import Head from "next/head";
 
 //components
 import { Card } from "primereact/card";
-import { SelectButton } from "primereact/selectbutton";
+import { Button } from "primereact/button";
 import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
 import { Message } from "primereact/message";
-import NaverMap from "@/src/components/map/baby/NaverMap";
+import ClickNaverMap from "@/src/components/map/baby/ClickNaverMap";
 
 export default function Main() {
   const [list, setList] = useState([]);
+  const [selectMothercare, setSelectMothercare] = useState(null); //선택된 어린이집 정보
+
   const fetchList = async () => {
     try {
       const response = await fetch("/api/baby/getMotherCareGangnam");
@@ -37,6 +39,18 @@ export default function Main() {
     fetchList();
   }, []);
 
+  const viewLocationButton = (rowData) => {
+    return (
+      <Button
+        icon="pi pi-map-marker"
+        className="p-button-rounded"
+        onClick={() => {
+          setSelectMothercare(rowData);
+        }}
+      />
+    );
+  };
+
   return (
     <>
       <Head>
@@ -56,7 +70,7 @@ export default function Main() {
       <div className="flex flex-col gap-4">
         <Card title="서울 강남">인허가 받은 산후조리원 리스트</Card>
         <Card>
-          <NaverMap list={list} />
+          <ClickNaverMap item={selectMothercare} />
         </Card>
         <Card>
           <Message
@@ -86,6 +100,7 @@ export default function Main() {
             <Column field="NURSAIDCNT" header="간호조무사수(명)"></Column>
             <Column field="NUTRCNT" header="영양사수(명)"></Column>
             <Column field="BDNGLAYERCNT" header="건물층수"></Column>
+            <Column body={viewLocationButton} header="지도위치"></Column>
           </DataTable>
         </Card>
       </div>
