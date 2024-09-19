@@ -228,7 +228,6 @@ export default function Main() {
                       header={`${item.SIGUN_NM} - ${item.BIZPLC_NM}`}
                       key={id}
                     >
-                      <Tag value="new"></Tag>
                       <p>주소 : {item.REFINE_LOTNO_ADDR}</p>
                       <p>임산부 정원수: {item.PWNM_PSN_CAPA_CNT}</p>
                     </AccordionTab>
