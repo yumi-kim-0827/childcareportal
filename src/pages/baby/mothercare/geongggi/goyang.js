@@ -3,14 +3,16 @@
 import React, { useState, useEffect } from "react";
 //components
 import { Card } from "primereact/card";
-import { SelectButton } from "primereact/selectbutton";
+import { Button } from "primereact/button";
 import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
 import { Message } from "primereact/message";
+import ClickNaverMap from "@/src/components/map/baby/ClickNaverMap";
 
 export default function Main() {
   const [list, setList] = useState([]);
-
+  const [selectMothercare, setSelectMothercare] = useState(null); //선택된 아이템
+  console.log(list);
   const fetchList = async () => {
     const sigun_nm = "고양시";
     try {
@@ -38,6 +40,18 @@ export default function Main() {
   useEffect(() => {
     fetchList();
   }, []);
+
+  const viewLocationButton = (rowData) => {
+    return (
+      <Button
+        icon="pi pi-map-marker"
+        className="p-button-rounded"
+        onClick={() => {
+          setSelectMothercare(rowData);
+        }}
+      />
+    );
+  };
 
   return (
     <>
@@ -73,7 +87,15 @@ export default function Main() {
             <Column field="NURSAID_CNT" header="간호조무사수(명)"></Column>
             <Column field="NUTRST_CNT" header="영양사수(명)"></Column>
             <Column field="BULDNG_FLOOR_CNT" header="건물층수"></Column>
+            <Column body={viewLocationButton} header="지도위치"></Column>
           </DataTable>
+        </Card>
+        <Card>
+          <ClickNaverMap
+            item={selectMothercare}
+            itemPath={selectMothercare?.REFINE_ROADNM_ADDR}
+            itemName={selectMothercare?.BIZPLC_NM}
+          />
         </Card>
       </div>
     </>

@@ -13,7 +13,7 @@ import ClickNaverMap from "@/src/components/map/baby/ClickNaverMap";
 
 export default function Main() {
   const [list, setList] = useState([]);
-  const [selectMothercare, setSelectMothercare] = useState(null); //선택된 어린이집 정보
+  const [selectMothercare, setSelectMothercare] = useState(null); //선택된 아이템
 
   const fetchList = async () => {
     try {
@@ -70,9 +70,6 @@ export default function Main() {
       <div className="flex flex-col gap-4">
         <Card title="서울 강남">인허가 받은 산후조리원 리스트</Card>
         <Card>
-          <ClickNaverMap item={selectMothercare} />
-        </Card>
-        <Card>
           <Message
             severity="success"
             text={`전체 리스트 수 ${list.length}`}
@@ -102,6 +99,13 @@ export default function Main() {
             <Column field="BDNGLAYERCNT" header="건물층수"></Column>
             <Column body={viewLocationButton} header="지도위치"></Column>
           </DataTable>
+        </Card>
+        <Card>
+          <ClickNaverMap
+            item={selectMothercare}
+            itemPath={selectMothercare?.RDNWHLADDR}
+            itemName={selectMothercare?.BPLCNM}
+          />
         </Card>
       </div>
     </>

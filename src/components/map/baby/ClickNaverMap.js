@@ -1,6 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 
-const ClickNaverMap = ({ item }) => {
+//사용자가 선택한 아이템 객체, 주소, 이름을 가져와 네이버 지도에 마커 표시
+
+const ClickNaverMap = ({ item, itemPath, itemName }) => {
   const mapRef = useRef(null);
   const [map, setMap] = useState(null);
   const [scriptLoaded, setScriptLoaded] = useState(false);
@@ -47,17 +49,28 @@ const ClickNaverMap = ({ item }) => {
     if (!map || !scriptLoaded || !item) return;
 
     if (window.naver && window.naver.maps && window.naver.maps.Service) {
-      const address = item.RDNWHLADDR;
+      const address = itemPath;
+      const name = itemName;
 
-      const name = item.BPLCNM;
+      if (!address) {
+        console.error("해당 주소를 알 수 없습니다.");
+        return;
+      }
+
       naver.maps.Service.geocode({ query: address }, (status, response) => {
         if (status === naver.maps.Service.Status.ERROR) {
           console.error("Geocode error:", response);
           return;
         }
+
         const geocodeResult = response.v2.addresses[0];
+
+        if (!geocodeResult || !geocodeResult.x || !geocodeResult.y) {
+          alert("유효한 주소를 찾을 수 없습니다. 주소명을 확인해주세요.");
+          return;
+        }
+
         const { x: longitude, y: latitude } = geocodeResult;
-        console.log(geocodeResult);
 
         // 지도 중심 변경 및 마커 추가
         map.setCenter(new naver.maps.LatLng(latitude, longitude));
