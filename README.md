@@ -19,7 +19,8 @@ Project View : [here](https://www.childcareportal.co.kr/)
 - Next js
 - Javascript
 - Prime React Library
-- scss
+- tailwind css
+- Naver map
 
 ## Usage
 
