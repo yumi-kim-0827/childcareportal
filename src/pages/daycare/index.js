@@ -7,7 +7,7 @@ import { Card } from "primereact/card";
 import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
 import { Button } from "primereact/button";
-import NaverMap from "@/src/components/map/daycare/NaverMap";
+import ClickNaverMap from "@/src/components/map/ClickNaverMap";
 import TotalLocationTab from "@/src/components/tab/TotalLocationTab";
 //utills
 import transformDayCareData from "@/src/utils/transformDayCareData";
@@ -17,6 +17,7 @@ export default function Main() {
   const [code, setCode] = useState("11680"); //시군구코드 선택
   const [selectDayCare, setSelectDayCare] = useState(null); //선택된 어린이집 정보
 
+  console.log(selectDayCare);
   const handleClick = (sigunCode) => {
     setCode(sigunCode);
   };
@@ -108,7 +109,11 @@ export default function Main() {
           </DataTable>
         </Card>
         <Card>
-          <NaverMap item={selectDayCare} />
+          <ClickNaverMap
+            item={selectDayCare}
+            itemPath={selectDayCare?.craddr}
+            itemName={selectDayCare?.crname}
+          />
         </Card>
       </div>
     </>

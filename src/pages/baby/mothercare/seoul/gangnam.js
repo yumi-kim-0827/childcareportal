@@ -9,7 +9,7 @@ import { Button } from "primereact/button";
 import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
 import { Message } from "primereact/message";
-import ClickNaverMap from "@/src/components/map/baby/ClickNaverMap";
+import ClickNaverMap from "@/src/components/map/ClickNaverMap";
 
 export default function Main() {
   const [list, setList] = useState([]);

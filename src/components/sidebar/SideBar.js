@@ -19,8 +19,7 @@ export default function SideBar() {
       <div className="min-h-screen flex flex-col relative lg:static">
         <div
           id="app-sidebar-2"
-          className="surface-section h-screen block flex-shrink-0 absolute lg:static left-0 top-0 z-1 border-right-1 surface-border select-none"
-          style={{ width: "280px" }}
+          className="surface-section w-[280px] max-medium:w-[180px] h-screen block flex-shrink-0 absolute lg:static left-0 top-0 z-1 border-right-1 surface-border select-none"
         >
           <div className="flex flex-column h-full">
             <div className="flex align-items-center justify-content-between px-4 pt-3 flex-shrink-0">
@@ -49,7 +48,7 @@ export default function SideBar() {
                   >
                     <div
                       ref={btnRef1}
-                      className="p-ripple p-3 flex align-items-center justify-content-between text-600 cursor-pointer"
+                      className="p-ripple p-3 max-medium:p-1 flex align-items-center justify-content-between text-600 cursor-pointer"
                     >
                       <span className="font-medium">신생아 케어</span>
                       <i className="pi pi-chevron-down"></i>
