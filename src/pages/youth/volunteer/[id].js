@@ -13,17 +13,16 @@ export default function Main() {
   const router = useRouter();
   const { id } = router.query;
 
+  const [programDetail, setProgramDetail] = useState({});
+
   const fetchList = async (id) => {
     try {
-      const response = await fetch(
-        `/api/youth/getVolunteerDetail?pageNo=${id}`
-      );
+      const response = await fetch(`/api/youth/getVolunteerDetail?key1=${id}`);
 
       if (response.ok) {
         const result = await response.json();
-        const data = result.response.body[0].items[0].item;
-
-        setList(data);
+        const data = result.response.body[0].items[0].item[0];
+        setProgramDetail(data);
       } else {
         const errorText = await response.text(); // 에러 메시지 확인
         console.log("응답 오류:", errorText);

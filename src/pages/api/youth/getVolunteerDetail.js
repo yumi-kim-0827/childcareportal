@@ -6,11 +6,11 @@ export default async function getVolunteerDetail(req, res) {
   const KEY = process.env.NEXT_PUBLIC_PUBLICDATA_KEY;
 
   if (req.method === "GET") {
-    const { pageNo } = req.query;
+    const { id } = req.query;
     console.log("아녕");
     try {
       const response = await fetch(
-        `https://apis.data.go.kr/1383000/YouthActivInfoVolSrvc/getVolProgrmList?serviceKey=${KEY}&pageNo=1&numOfRows=10&sdate=20240924`
+        `https://apis.data.go.kr/1383000/YouthActivInfoVolSrvc/getVolProgrmInfo?serviceKey=${KEY}&key1=${id}`
       );
       const text = await response.text();
 
