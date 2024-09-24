@@ -12,7 +12,7 @@ import ClickNaverMap from "@/src/components/map/ClickNaverMap";
 export default function Main() {
   const [list, setList] = useState([]);
   const [selectMothercare, setSelectMothercare] = useState(null); //선택된 아이템
-  console.log(list);
+
   const fetchList = async () => {
     const sigun_nm = "고양시";
     try {
