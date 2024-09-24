@@ -1,21 +1,22 @@
-// pages/api/daycare/getNewMonthly.js
-// 월별 신규 오픈 어린이집 조회
+// pages/api/youth/getVolunteerList.js
+// 청소년 자원봉사활동
 import { parseStringPromise } from "xml2js";
 
-export default async function getNewMonthly(req, res) {
-  const URI = process.env.NEXT_PUBLIC_IP_NEWMONTHCARE_URI;
-  const KEY = process.env.NEXT_PUBLIC_IP_NEWMONTHCARE_KEY;
+export default async function getVolunteerList(req, res) {
+  const KEY = process.env.NEXT_PUBLIC_PUBLICDATA_KEY;
 
   if (req.method === "GET") {
-    const { yyyymm } = req.query; // 쿼리 파라미터에서 date 값을 가져옴
+    const { pageNo } = req.query;
+    console.log("아녕");
     try {
-      const response = await fetch(`${URI}request?key=${KEY}&yyyymm=${yyyymm}`);
+      const response = await fetch(
+        `https://apis.data.go.kr/1383000/YouthActivInfoVolSrvc/getVolProgrmList?serviceKey=${KEY}&pageNo=1&numOfRows=10&sdate=20240924`
+      );
       const text = await response.text();
 
       // XML 텍스트를 JavaScript 객체로 변환
       const data = await parseStringPromise(text);
-      // 변환된 데이터를 JSON 형식으로 클라이언트 응답 보냄
-      console.log(response);
+      // 변환된 데이터를 JSON 형식으로 클라이언트에게 보냄
       res.status(200).json(data);
     } catch (error) {
       console.error(error);
