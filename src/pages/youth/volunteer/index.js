@@ -1,7 +1,8 @@
-//어린이집>경기
-//pages>daycare>geonggi
+//청소년>자원봉사
+//pages>youth>volunteer>index
 import React, { useState, useEffect } from "react";
 import Head from "next/head";
+import { useRouter } from "next/router";
 //components
 import { Card } from "primereact/card";
 import { DataTable } from "primereact/datatable";
@@ -9,12 +10,9 @@ import { Column } from "primereact/column";
 import { Button } from "primereact/button";
 
 export default function Main() {
-  const [list, setList] = useState([]); //
-  const [pageNo, setPageNo] = useState(1); //어린이집 선택 시군구 코드
-
-  const handleChange = (e) => {
-    setCode(e.value);
-  };
+  const router = useRouter();
+  const [list, setList] = useState([]);
+  const [pageNo, setPageNo] = useState(1); //페이징 번호
 
   const fetchList = async (pageNo) => {
     try {
@@ -47,7 +45,8 @@ export default function Main() {
         icon="pi pi-map-marker"
         className="p-button-rounded"
         onClick={() => {
-          setSelectCenter(rowData);
+          const prmKey = Number(rowData.key1[0]);
+          router.push(`/youth/volunteer/${prmKey}`);
         }}
       ></Button>
     );

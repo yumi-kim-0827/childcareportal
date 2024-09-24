@@ -1,8 +1,8 @@
-// pages/api/youth/getVolunteerList.js
-// 청소년 자원봉사활동
+// pages/api/youth/getVolunteerDetail.js
+// 청소년 자원봉사활동 상세내용
 import { parseStringPromise } from "xml2js";
 
-export default async function getVolunteerList(req, res) {
+export default async function getVolunteerDetail(req, res) {
   const KEY = process.env.NEXT_PUBLIC_PUBLICDATA_KEY;
 
   if (req.method === "GET") {
@@ -10,7 +10,7 @@ export default async function getVolunteerList(req, res) {
     console.log("아녕");
     try {
       const response = await fetch(
-        `https://apis.data.go.kr/1383000/YouthActivInfoVolSrvc/getVolProgrmList?serviceKey=${KEY}&key1=9577829`
+        `https://apis.data.go.kr/1383000/YouthActivInfoVolSrvc/getVolProgrmList?serviceKey=${KEY}&pageNo=1&numOfRows=10&sdate=20240924`
       );
       const text = await response.text();
 
