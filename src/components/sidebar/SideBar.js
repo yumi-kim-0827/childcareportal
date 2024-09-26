@@ -16,11 +16,11 @@ export default function SideBar() {
   const btnRef7 = useRef(null);
 
   return (
-    <div className="fixed card z-50">
+    <div className="fixed card z-50 max-medium:hidden max-medium:bg-red-500">
       <div className="min-h-screen flex flex-col relative lg:static">
         <div
           id="app-sidebar-2"
-          className="surface-section w-[280px] max-medium:w-[180px] h-screen block flex-shrink-0 absolute lg:static left-0 top-0 z-1 border-right-1 surface-border select-none"
+          className="surface-section w-[280px] max-medium:w-[180px] max-medium:bg-red-800 h-screen block flex-shrink-0 absolute lg:static left-0 top-0 z-1 border-right-1 surface-border select-none"
         >
           <div className="flex flex-column h-full">
             <div className="flex align-items-center justify-content-between px-4 pt-3 flex-shrink-0">
