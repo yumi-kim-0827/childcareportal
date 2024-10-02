@@ -15,15 +15,16 @@ export default function Main() {
   const [listNewMonthlyCare, setListNewMonthlyCare] = useState([]);
   //경기 운영중인 산후조리원
   const [listGeonggiMother, setListGeonggiMother] = useState([]);
+  //여성가족부 정책 리스트
+  const [notice, setNotice] = useState([]);
+
   const router = useRouter();
   const today = new Date();
-  console.log(today);
 
   function formatDate(today) {
     if (!today) return "";
     const MM = String(today.getUTCMonth() + 1).padStart(2, "0");
     const YYYY = String(today.getUTCFullYear());
-    console.log(MM);
     return `${YYYY}${MM}`;
   }
 
@@ -40,7 +41,6 @@ export default function Main() {
         const result = await response.json();
         const data = result.response.item;
         setListNewMonthlyCare(data);
-        console.log(data);
       } else {
         const errorText = await response.text(); // 에러 메시지 확인
         console.log("응답 오류:", errorText);
@@ -185,8 +185,29 @@ export default function Main() {
     );
   };
 
-  console.log(listGeonggiMother);
+  const fetchNoticeList = async () => {
+    try {
+      const response = await fetch("/api/getNoticeList");
 
+      if (response.ok) {
+        const result = await response.json();
+        console.log(result);
+        const data = result.body[0].items.item;
+        console.log(data);
+        setNotice(data);
+      } else {
+        console.log("응답 오류");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    fetchNoticeList();
+  }, []);
+
+  console.log(notice);
   return (
     <>
       <Card title="어린이집 찾기">메인</Card>
@@ -201,6 +222,28 @@ export default function Main() {
           autoplayInterval={3000}
           itemTemplate={itemTemplate}
         />
+      </Card>
+      <Card title="청소년, 육아 정책 브리핑 모음">
+        <div className="grid grid-cols-4 gap-4">
+          {notice.map((item, id) => {
+            return (
+              <div key={id} className="basis-1/2">
+                <div>
+                  <h3>{item.title}</h3> <span>{item.regDt}</span>
+                </div>
+                {/* <Image
+                  src={`${item.thumbUrl}`}
+                  alt="메인배너"
+                  layout="responsive"
+                  width={1000}
+                  height={400}
+                /> */}
+                <Button label="Submit" icon="pi pi-check" iconPos="right" />
+              </div>
+            );
+          })}
+        </div>
+        <span>출처 : 여성가족부</span>
       </Card>
       <Card>
         <div className="flex gap-2 justi">
