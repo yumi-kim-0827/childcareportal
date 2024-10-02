@@ -232,7 +232,6 @@ export default function Main() {
                 <Image
                   src={item.thumbUrl}
                   alt={item.title}
-                  layout="responsive"
                   width={400}
                   height={300}
                   priority

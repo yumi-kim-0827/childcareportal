@@ -14,7 +14,7 @@ export default function App({ Component, pageProps }) {
     <PrimeReactProvider>
       <div className="flex">
         <SideBar />
-        <div className="p-4 mx-auto w-full max-w-7xl border-1 border-yellow-500">
+        <div className="flex flex-col gap-4 p-4 mx-auto w-full max-w-7xl border-1 border-yellow-500 bg-white">
           <AutoBreadcrumb />
           <Component {...pageProps} />
         </div>
