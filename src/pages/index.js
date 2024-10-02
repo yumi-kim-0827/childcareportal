@@ -185,15 +185,14 @@ export default function Main() {
     );
   };
 
+  //정책 뉴스 브리핑 모음
   const fetchNoticeList = async () => {
     try {
       const response = await fetch("/api/getNoticeList");
 
       if (response.ok) {
         const result = await response.json();
-        console.log(result);
         const data = result.body[0].items.item;
-        console.log(data);
         setNotice(data);
       } else {
         console.log("응답 오류");
@@ -207,7 +206,6 @@ export default function Main() {
     fetchNoticeList();
   }, []);
 
-  console.log(notice);
   return (
     <>
       <Card title="어린이집 찾기">메인</Card>
@@ -231,13 +229,14 @@ export default function Main() {
                 <div>
                   <h3>{item.title}</h3> <span>{item.regDt}</span>
                 </div>
-                {/* <Image
-                  src={`${item.thumbUrl}`}
-                  alt="메인배너"
+                <Image
+                  src={item.thumbUrl}
+                  alt={item.title}
                   layout="responsive"
-                  width={1000}
-                  height={400}
-                /> */}
+                  width={400}
+                  height={300}
+                  priority
+                />
                 <Button label="Submit" icon="pi pi-check" iconPos="right" />
               </div>
             );
