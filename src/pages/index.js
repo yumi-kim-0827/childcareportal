@@ -206,6 +206,7 @@ export default function Main() {
     fetchNoticeList();
   }, []);
 
+  console.log(notice);
   return (
     <>
       <Card title="어린이집 찾기">메인</Card>
@@ -222,26 +223,32 @@ export default function Main() {
         />
       </Card>
       <Card title="청소년, 육아 정책 브리핑 모음">
-        <div className="grid grid-cols-4 gap-4">
+        <div className="pb-2 flex justify-end items-center gap-2">
+          <span className="py-2">출처 : 여성가족부</span>
+          <Button
+            icon="pi pi-external-link"
+            className="bg-indigo-300 border-0"
+            rounded
+            onClick={() => {
+              router.push(
+                "https://www.mogef.go.kr/mp/pcd/mp_pcd_s001.do?mid=plc500"
+              );
+            }}
+          />
+        </div>
+        <div>
           {notice.map((item, id) => {
             return (
-              <div key={id} className="basis-1/2">
+              <div key={id} className="mb-2 flex justify-between items-center">
                 <div>
-                  <h3>{item.title}</h3> <span>{item.regDt}</span>
+                  <h3 className="m-0">{item.title}</h3>
+                  <span>{item.regDt}</span>
                 </div>
-                <Image
-                  src={item.thumbUrl}
-                  alt={item.title}
-                  width={400}
-                  height={300}
-                  priority
-                />
                 <Button label="Submit" icon="pi pi-check" iconPos="right" />
               </div>
             );
           })}
         </div>
-        <span>출처 : 여성가족부</span>
       </Card>
       <Card>
         <div className="flex gap-2 justi">
