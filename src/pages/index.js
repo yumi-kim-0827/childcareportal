@@ -209,7 +209,7 @@ export default function Main() {
   console.log(notice);
   return (
     <>
-      <Card title="어린이집 찾기">메인</Card>
+      <Card title="어린이집 찾기" />
       <Card>
         <Carousel
           value={items}

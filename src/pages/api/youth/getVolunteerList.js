@@ -7,10 +7,10 @@ export default async function getVolunteerList(req, res) {
 
   if (req.method === "GET") {
     const { pageNo } = req.query;
-    console.log("아녕");
+
     try {
       const response = await fetch(
-        `https://apis.data.go.kr/1383000/YouthActivInfoVolSrvc/getVolProgrmList?serviceKey=${KEY}&key1=9577829`
+        `https://apis.data.go.kr/1383000/YouthActivInfoVolSrvc/getVolProgrmList?serviceKey=${KEY}&pageNo=${pageNo}&numOfRows=20&sdate=20200101`
       );
       const text = await response.text();
 

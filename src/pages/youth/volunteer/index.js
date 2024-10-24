@@ -5,14 +5,15 @@ import Head from "next/head";
 import { useRouter } from "next/router";
 //components
 import { Card } from "primereact/card";
-import { DataTable } from "primereact/datatable";
-import { Column } from "primereact/column";
 import { Button } from "primereact/button";
+import { Paginator } from "primereact/paginator";
 
 export default function Main() {
   const router = useRouter();
   const [list, setList] = useState([]);
   const [pageNo, setPageNo] = useState(1); //페이징 번호
+  const [first, setFirst] = useState(0);
+  const [rows, setRows] = useState(1);
 
   const fetchList = async (pageNo) => {
     try {
@@ -23,7 +24,6 @@ export default function Main() {
       if (response.ok) {
         const result = await response.json();
         const data = result.response.body[0].items[0].item;
-
         setList(data);
       } else {
         const errorText = await response.text(); // 에러 메시지 확인
@@ -36,7 +36,9 @@ export default function Main() {
   };
 
   useEffect(() => {
-    fetchList(pageNo);
+    if (pageNo > 0) {
+      fetchList(pageNo);
+    }
   }, [pageNo]);
 
   const viewLocationButton = (rowData) => {
@@ -50,6 +52,12 @@ export default function Main() {
         }}
       ></Button>
     );
+  };
+
+  const onPageChange = (event) => {
+    setFirst(event.first);
+    setRows(event.rows);
+    setPageNo(event.first + 1);
   };
 
   return (
@@ -82,19 +90,43 @@ export default function Main() {
       <div className="flex flex-col gap-4">
         <Card title="청소년 자원봉사 최신 목록"></Card>
         <Card>
-          <DataTable
-            value={list}
-            paginator
-            rows={5}
-            rowsPerPageOptions={[5, 10, 25, 50]}
-            tableStyle={{ minWidth: "50rem" }}
-          >
-            <Column field="organNm" header="활동장소명"></Column>
-            <Column field="pgmNm" header="자원봉사 프로그램명"></Column>
-            <Column field="price" header="참가비"></Column>
-            <Column field="target" header="참여대상"></Column>
-            <Column body={viewLocationButton} header="상세내용"></Column>
-          </DataTable>
+          <div className="flex text-center">
+            <p className="w-1/5">
+              <span className="py-1 px-2 rounded-full">
+                <i className="pi pi-building"></i>
+              </span>
+              활동장소명
+            </p>
+            <p className="w-2/5">
+              <i className="pi pi-hammer"></i>자원봉사 프로그램명
+            </p>
+            <p className="w-1/5">
+              <i className="pi pi-user"></i>참여대상
+            </p>
+            <p className="w-1/5">
+              <i className="pi pi-money-bill"></i>참가비
+            </p>
+            <p className="w-1/5">
+              <i className="pi pi-money-bill"></i>자세히보기
+            </p>
+          </div>
+          {list.map((item, id) => {
+            return (
+              <div key={id} className="flex text-center">
+                <p className="w-1/5">{item.organNm}</p>
+                <p className="w-2/5">{item.pgmNm}</p>
+                <p className="w-1/5">{item.target}</p>
+                <p className="w-1/5">{item.price}</p>
+                <p className="w-1/5">{item.price}</p>
+              </div>
+            );
+          })}
+          <Paginator
+            first={first}
+            rows={rows}
+            totalRecords={10}
+            onPageChange={onPageChange}
+          />
         </Card>
       </div>
     </>
