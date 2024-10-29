@@ -7,6 +7,7 @@ import { useRouter } from "next/router";
 import { Card } from "primereact/card";
 import { Button } from "primereact/button";
 import { Paginator } from "primereact/paginator";
+import { ProgressSpinner } from "primereact/progressspinner";
 
 export default function Main() {
   const router = useRouter();
@@ -41,17 +42,9 @@ export default function Main() {
     }
   }, [pageNo]);
 
-  const viewLocationButton = (rowData) => {
-    return (
-      <Button
-        icon="pi pi-map-marker"
-        className="p-button-rounded"
-        onClick={() => {
-          const prmKey = Number(rowData.key1[0]);
-          router.push(`/youth/volunteer/${prmKey}`);
-        }}
-      ></Button>
-    );
+  const handleProgramDetailPage = (programKey) => {
+    const prmKey = Number(programKey);
+    router.push(`/youth/volunteer/${prmKey}`);
   };
 
   const onPageChange = (event) => {
@@ -110,23 +103,46 @@ export default function Main() {
               <i className="pi pi-money-bill"></i>자세히보기
             </p>
           </div>
-          {list.map((item, id) => {
-            return (
-              <div key={id} className="flex text-center">
-                <p className="w-1/5">{item.organNm}</p>
-                <p className="w-2/5">{item.pgmNm}</p>
-                <p className="w-1/5">{item.target}</p>
-                <p className="w-1/5">{item.price}</p>
-                <p className="w-1/5">{item.price}</p>
-              </div>
-            );
-          })}
-          <Paginator
-            first={first}
-            rows={rows}
-            totalRecords={10}
-            onPageChange={onPageChange}
-          />
+          {list.length > 0 ? (
+            <>
+              {list.map((item, id) => {
+                return (
+                  <div key={id} className="flex text-center">
+                    <p className="w-1/5">{item.organNm}</p>
+                    <p className="w-2/5">{item.pgmNm}</p>
+                    <p className="w-1/5">{item.target}</p>
+                    <p className="w-1/5">{item.price}</p>
+                    <p className="w-1/5">
+                      <Button
+                        icon="pi pi-external-link"
+                        onClick={() => {
+                          const programKey = item.key1[0];
+                          handleProgramDetailPage(programKey);
+                        }}
+                      />
+                    </p>
+                  </div>
+                );
+              })}
+              <Paginator
+                first={first}
+                rows={rows}
+                totalRecords={10}
+                onPageChange={onPageChange}
+              />
+            </>
+          ) : (
+            <div className="py-6 flex flex-col items-center justify-center gap-4">
+              <ProgressSpinner
+                style={{ width: "50px", height: "50px" }}
+                strokeWidth="8"
+                fill="var(--surface-ground)"
+                animationDuration=".5s"
+                className="text-center"
+              />
+              <span>잠시만 기다려주세요 ...</span>
+            </div>
+          )}
         </Card>
       </div>
     </>

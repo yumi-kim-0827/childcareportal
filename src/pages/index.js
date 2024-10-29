@@ -9,6 +9,8 @@ import { Card } from "primereact/card";
 import { Carousel } from "primereact/carousel";
 import { Accordion, AccordionTab } from "primereact/accordion";
 import { Tag } from "primereact/tag";
+import { Paginator } from "primereact/paginator";
+import { ProgressSpinner } from "primereact/progressspinner";
 
 export default function Main() {
   //월별 신규 어린이집
@@ -17,6 +19,12 @@ export default function Main() {
   const [listGeonggiMother, setListGeonggiMother] = useState([]);
   //여성가족부 정책 리스트
   const [notice, setNotice] = useState([]);
+  //청소년 봉사활동 프로그램 목록
+  const [volunteerList, setVolunteerList] = useState([]);
+  const [first, setFirst] = useState(0);
+  const [rows, setRows] = useState(1);
+
+  const KEY = process.env.NEXT_PUBLIC_PUBLICDATA_KEY;
 
   const router = useRouter();
   const today = new Date();
@@ -185,7 +193,7 @@ export default function Main() {
     );
   };
 
-  //정책 뉴스 브리핑 모음
+  //정책 뉴스 브리핑 모음 api
   const fetchNoticeList = async () => {
     try {
       const response = await fetch("/api/getNoticeList");
@@ -206,7 +214,42 @@ export default function Main() {
     fetchNoticeList();
   }, []);
 
-  console.log(notice);
+  //청소년 봉사활동 프로그래밍 api
+  const fetchVolunteerList = async () => {
+    try {
+      const response = await fetch(
+        `https://apis.data.go.kr/1383000/YouthActivInfoVolSrvc/getVolProgrmList?serviceKey=${KEY}&pageNo=1&numOfRows=20&sdate=20200101`
+      );
+
+      if (response.ok) {
+        const result = await response.json();
+        const data = result.response.body[0].items[0].item;
+        setList(data);
+      } else {
+        const errorText = await response.text(); // 에러 메시지 확인
+        console.log("응답 오류:", errorText);
+        res.status(500).json({ error: errorText });
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    fetchVolunteerList();
+  }, []);
+
+  const handleProgramDetailPage = (programKey) => {
+    const prmKey = Number(programKey);
+    router.push(`/youth/volunteer/${prmKey}`);
+  };
+
+  const onPageChange = (event) => {
+    setFirst(event.first);
+    setRows(event.rows);
+    setPageNo(event.first + 1);
+  };
+
   return (
     <>
       <Card title="어린이집 찾기" />
@@ -285,6 +328,68 @@ export default function Main() {
             </div>
           </Card>
         </div>
+      </Card>
+      <Card title="청소년 자원봉사 최신 목록">
+        <div className="flex text-center">
+          <p className="w-1/5">
+            <span className="py-1 px-2 rounded-full">
+              <i className="pi pi-building"></i>
+            </span>
+            활동장소명
+          </p>
+          <p className="w-2/5">
+            <i className="pi pi-hammer"></i>자원봉사 프로그램명
+          </p>
+          <p className="w-1/5">
+            <i className="pi pi-user"></i>참여대상
+          </p>
+          <p className="w-1/5">
+            <i className="pi pi-money-bill"></i>참가비
+          </p>
+          <p className="w-1/5">
+            <i className="pi pi-money-bill"></i>자세히보기
+          </p>
+        </div>
+        {volunteerList.length > 0 ? (
+          <>
+            {volunteerList.map((item, id) => {
+              return (
+                <div key={id} className="flex text-center">
+                  <p className="w-1/5">{item.organNm}</p>
+                  <p className="w-2/5">{item.pgmNm}</p>
+                  <p className="w-1/5">{item.target}</p>
+                  <p className="w-1/5">{item.price}</p>
+                  <p className="w-1/5">
+                    <Button
+                      icon="pi pi-external-link"
+                      onClick={() => {
+                        const programKey = item.key1[0];
+                        handleProgramDetailPage(programKey);
+                      }}
+                    />
+                  </p>
+                </div>
+              );
+            })}
+            <Paginator
+              first={first}
+              rows={rows}
+              totalRecords={10}
+              onPageChange={onPageChange}
+            />
+          </>
+        ) : (
+          <div className="py-6 flex flex-col items-center justify-center gap-4">
+            <ProgressSpinner
+              style={{ width: "50px", height: "50px" }}
+              strokeWidth="8"
+              fill="var(--surface-ground)"
+              animationDuration=".5s"
+              className="text-center"
+            />
+            <span>잠시만 기다려주세요 ...</span>
+          </div>
+        )}
       </Card>
     </>
   );
