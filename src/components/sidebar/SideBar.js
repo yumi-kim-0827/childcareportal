@@ -349,6 +349,17 @@ export default function SideBar() {
                         </li>
                       </ul>
                     </li>
+                    <li
+                      onClick={() => {
+                        router.push("/baby/recipe/");
+                      }}
+                    >
+                      <a className="p-ripple flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors w-full">
+                        <BsFillPinMapFill className="mr-2" />
+                        <span className="font-medium">추천 이유식 레시피</span>
+                        <Ripple />
+                      </a>
+                    </li>
                   </ul>
                 </li>
               </ul>
