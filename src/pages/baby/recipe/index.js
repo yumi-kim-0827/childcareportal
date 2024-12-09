@@ -28,34 +28,63 @@ export default function Main() {
   return (
     <>
       <div className="flex flex-col gap-4">
-        <Card title="이유식 준비기 추천 레시피" />
+        <Card title="이유식 추천 레시피" />
+        <Card>
+          <p>
+            3~4개월 아기는 일반적으로 모유나 분유만으로도 충분한 영양을 얻을 수
+            있습니다. 하지만 의사와 상의 후 이유식을 시작하기로 결정했다면,
+            아기에게 맞는 첫 이유식 레시피를 신중히 선택해야 합니다.
+          </p>
+          <h3>이유식 준비 전에 확인할 점</h3>
+          <p>
+            - 아기의 준비 상태: 목을 가눌 수 있고, 음식에 관심을 보이며, 혀
+            내밀기 반사가 줄어든 상태인지 확인하세요.
+          </p>
+          <p>
+            - 알레르기 체크: 새로운 음식을 줄 때마다 3~4일 간격으로 천천히
+            진행하며 알레르기 반응을 관찰하세요.
+          </p>
+        </Card>
         <Card>
           <TabView>
-            <TabPanel header="" leftIcon="pi pi-calendar mr-2">
-              <Card title="준비기">
-                <Image
-                  src=""
-                  alt="이유식 준비기 추천 레시피 쌀미음 사진"
-                  layout="responsive"
-                  width={1000}
-                  height={400}
-                />
-                <p>4~5개월 이유식 레시피 : 쌀미음</p>
-                <DataTable value={recipes} tableStyle={{ minWidth: "50rem" }}>
-                  <Column field="a1" header="개월 수"></Column>
-                  <Column field="a2" header="래시피 재료"></Column>
-                  <Column
-                    field="a3"
-                    header="레시피"
-                    body={recipesTemplate}
-                  ></Column>
-                  <Column
-                    field="a4"
-                    header="선호도"
-                    body={likeTemplate}
-                  ></Column>
-                </DataTable>
-              </Card>
+            <TabPanel header="생후 3~4개월" leftIcon="pi pi-calendar mr-2">
+              <TabView>
+                {recipes.map((item, id) => {
+                  return (
+                    <>
+                      <TabPanel header={item.name} key={id}>
+                        <Card title={item.name}>
+                          <Image
+                            src=""
+                            alt="이유식 준비기 추천 레시피 사진"
+                            layout="responsive"
+                            width={1000}
+                            height={400}
+                          />
+                          <p>4~5개월 이유식 레시피 : {item.name}</p>
+                          {/* <DataTable
+                            value={recipes}
+                            tableStyle={{ minWidth: "50rem" }}
+                          >
+                            <Column field="a1" header="개월 수"></Column>
+                            <Column field="a2" header="래시피 재료"></Column>
+                            <Column
+                              field="a3"
+                              header="레시피"
+                              body={recipesTemplate}
+                            ></Column>
+                            <Column
+                              field="a4"
+                              header="선호도"
+                              body={likeTemplate}
+                            ></Column>
+                          </DataTable> */}
+                        </Card>
+                      </TabPanel>
+                    </>
+                  );
+                })}
+              </TabView>
             </TabPanel>
           </TabView>
         </Card>
