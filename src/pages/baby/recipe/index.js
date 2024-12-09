@@ -25,11 +25,19 @@ export default function Main() {
     return <Tag value={recipes.a4} severity="success"></Tag>;
   };
 
+  console.log(recipes);
   return (
     <>
       <div className="flex flex-col gap-4">
         <Card title="이유식 추천 레시피" />
         <Card>
+          <Image
+            src="/images/babyfood1.png"
+            alt="메인배너"
+            layout="responsive"
+            width={1000}
+            height={400}
+          />
           <p>
             3~4개월 아기는 일반적으로 모유나 분유만으로도 충분한 영양을 얻을 수
             있습니다. 하지만 의사와 상의 후 이유식을 시작하기로 결정했다면,
@@ -47,44 +55,23 @@ export default function Main() {
         </Card>
         <Card>
           <TabView>
-            <TabPanel header="생후 3~4개월" leftIcon="pi pi-calendar mr-2">
+            <TabPanel header="생후 4~5개월" leftIcon="pi pi-calendar mr-2">
               <TabView>
-                {recipes.map((item, id) => {
+                {recipes.map((item) => {
                   return (
-                    <>
-                      <TabPanel header={item.name} key={id}>
-                        <Card title={item.name}>
-                          <Image
-                            src=""
-                            alt="이유식 준비기 추천 레시피 사진"
-                            layout="responsive"
-                            width={1000}
-                            height={400}
-                          />
-                          <p>4~5개월 이유식 레시피 : {item.name}</p>
-                          {/* <DataTable
-                            value={recipes}
-                            tableStyle={{ minWidth: "50rem" }}
-                          >
-                            <Column field="a1" header="개월 수"></Column>
-                            <Column field="a2" header="래시피 재료"></Column>
-                            <Column
-                              field="a3"
-                              header="레시피"
-                              body={recipesTemplate}
-                            ></Column>
-                            <Column
-                              field="a4"
-                              header="선호도"
-                              body={likeTemplate}
-                            ></Column>
-                          </DataTable> */}
-                        </Card>
-                      </TabPanel>
-                    </>
+                    <TabPanel header={item.name} key={item.id}>
+                      <ul>
+                        {item.a3.map((list, id) => {
+                          return <li key={id}>{list}</li>;
+                        })}
+                      </ul>
+                    </TabPanel>
                   );
                 })}
               </TabView>
+            </TabPanel>
+            <TabPanel header="생후 6~7개월" leftIcon="pi pi-calendar mr-2">
+              22
             </TabPanel>
           </TabView>
         </Card>
