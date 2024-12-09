@@ -60,6 +60,9 @@ export default function Main() {
                 {recipes.map((item) => {
                   return (
                     <TabPanel header={item.name} key={item.id}>
+                      <strong className="text-lg">{item.detail}</strong>
+                      <p className="pt-4">재료 : {item.a2}</p>
+                      <p>선호도 : 🧡</p>
                       <ul>
                         {item.a3.map((list, id) => {
                           return <li key={id}>{list}</li>;
