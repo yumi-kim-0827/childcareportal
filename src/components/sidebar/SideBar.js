@@ -60,6 +60,19 @@ export default function SideBar() {
                     </div>
                   </StyleClass>
                   <ul className="list-none p-0 m-0 overflow-hidden">
+                    <li
+                      onClick={() => {
+                        router.push("/baby/mothercare/");
+                      }}
+                    >
+                      <a className="p-ripple flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors w-full">
+                        <BsFillPinMapFill className="mr-2" />
+                        <span className="font-medium">
+                          산후조리가 필요한 이유
+                        </span>
+                        <Ripple />
+                      </a>
+                    </li>
                     <li>
                       <StyleClass
                         nodeRef={btnRef2}

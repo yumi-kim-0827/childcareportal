@@ -61,7 +61,7 @@ export default function Main() {
         <Card>
           <TabView pt={{ panelcontainer: { style: { padding: "1rem 0" } } }}>
             <TabPanel header="생후 4~5개월" leftIcon="pi pi-calendar mr-2">
-              <h3>초기 이유식</h3>
+              <h3>초기 이유식 레시피</h3>
               <p>첫 이유식, 또는 초기 이유식</p>
               <span>
                 이 시기에는 아기의 소화 시스템이 아직 미숙하므로, 쌀미음, 애호박
@@ -70,7 +70,7 @@ export default function Main() {
               <TabView
                 pt={{
                   root: {
-                    style: { margin: "1rem 0", border: "1px solid #f0f0f0" },
+                    style: { margin: "2rem 0", border: "1px solid #f0f0f0" },
                   },
                 }}
               >
@@ -91,7 +91,7 @@ export default function Main() {
               </TabView>
             </TabPanel>
             <TabPanel header="생후 6~7개월" leftIcon="pi pi-calendar mr-2">
-              <h3>중기 이유식</h3>
+              <h3>중기 이유식 레시피</h3>
               <span>
                 아기가 점차 더 다양한 음식을 시도할 수 있게 되며, 이 시기에는
                 고기나 다양한 채소, 과일을 포함한 이유식이 제공됩니다.
@@ -99,7 +99,7 @@ export default function Main() {
               <TabView
                 pt={{
                   root: {
-                    style: { margin: "1rem 0", border: "1px solid #f0f0f0" },
+                    style: { margin: "2rem 0", border: "1px solid #f0f0f0" },
                   },
                 }}
               >
