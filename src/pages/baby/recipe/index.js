@@ -186,6 +186,46 @@ export default function Main() {
             </TabPanel>
           </TabView>
         </Card>
+        <Card>
+          <Image
+            src="/images/babyfood2.png"
+            alt="메인배너"
+            layout="responsive"
+            width={1000}
+            height={400}
+          />
+          <h3 className="py-2">아기가 이유식을 거부해요.</h3>
+          <p className="max-medium:text-sm">
+            아기가 이유식을 거부할 때는 여러 가지 이유가 있을 수 있습니다.
+          </p>
+          <p className="max-medium:text-sm">
+            아기가 처음 이유식을 시작하거나 새로운 맛과 질감에 익숙하지 않을 때
+            자연스러운 반응일 수 있으므로 너무 걱정하지 마세요.
+          </p>
+          <h3 className="py-2">이유식 거부 대처법</h3>
+          <p className="max-medium:text-sm">
+            - 억지로 먹이지 않기 : 억지로 이유식을 먹이면 아기가 더 거부감을
+            느낄 수 있으니 아기가 관심을 보일 때까지 천천히 기다리세요.
+          </p>
+          <p className="max-medium:text-sm">
+            - 다른 시간대에 시도하기 : 아기가 더 기운이 있고 배고플 때 다시
+            시도해 보세요. 예를 들어, 낮잠 후 기분이 좋은 시간에 시도할 수
+            있습니다.
+          </p>
+          <p className="max-medium:text-sm">
+            - 작은 양으로 시작하기 : 한두 숟가락 정도로 소량씩 시작해 아기의
+            부담을 줄입니다. 숟가락 대신 손가락 끝에 음식을 묻혀 입에 살짝
+            대보는 것도 좋습니다.
+          </p>
+          <p className="max-medium:text-sm">
+            - 맛과 질감 신경쓰기 : 너무 묽거나 뻑뻑한 질감은 조절해 보세요.
+            단맛이 나는 고구마, 단호박 같은 재료로 시작하면 더 잘 받아들일 수
+            있습니다.
+          </p>
+          <p className="max-medium:text-sm">
+            - 놀이처럼 접근하기 : 이유식 시간을 즐겁고 재미있게 만들어 보세요.
+          </p>
+        </Card>
       </div>
     </>
   );
