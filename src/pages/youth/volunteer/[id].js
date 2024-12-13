@@ -37,8 +37,6 @@ export default function Main() {
     }
   }, [id]);
 
-  console.log(programDetail);
-
   return (
     <>
       <Head>

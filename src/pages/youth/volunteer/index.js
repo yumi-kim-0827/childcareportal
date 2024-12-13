@@ -85,22 +85,22 @@ export default function Main() {
         <Card title="청소년 자원봉사 최신 목록"></Card>
         <Card>
           <div className="py-2 flex text-center bg-gray-100">
-            <p className="w-1/5">
+            <p className="w-1/5 max-medium:font-bold max-medium:text-xs">
               <span className="py-1 px-2 rounded-full">
                 <i className="pi pi-building"></i>
               </span>
               활동장소명
             </p>
-            <p className="w-2/5">
+            <p className="w-2/5 max-medium:font-bold max-medium:text-xs">
               <i className="pi pi-hammer"></i>자원봉사 프로그램명
             </p>
-            <p className="w-1/5">
+            <p className="w-1/5 max-medium:font-bold max-medium:text-xs">
               <i className="pi pi-user"></i>참여대상
             </p>
-            <p className="w-1/5">
+            <p className="w-1/5 max-medium:font-bold max-medium:text-xs">
               <i className="pi pi-money-bill"></i>참가비
             </p>
-            <p className="w-1/5">
+            <p className="w-1/5 max-medium:font-bold max-medium:text-xs">
               <i className="pi pi-pi-list-check"></i>자세히보기
             </p>
           </div>
@@ -112,11 +112,11 @@ export default function Main() {
                     key={id}
                     className="mt-2 flex items-center text-center hover:bg-yellow-100"
                   >
-                    <p className="w-1/5">{item.organNm}</p>
-                    <p className="w-2/5">{item.pgmNm}</p>
-                    <p className="w-1/5">{item.target}</p>
-                    <p className="w-1/5">{item.price}</p>
-                    <p className="w-1/5">
+                    <p className="w-1/5 max-medium:text-xs">{item.organNm}</p>
+                    <p className="w-2/5 max-medium:text-xs">{item.pgmNm}</p>
+                    <p className="w-1/5 max-medium:text-xs">{item.target}</p>
+                    <p className="w-1/5 max-medium:text-xs">{item.price}</p>
+                    <p className="w-1/5 max-medium:text-xs">
                       <Button
                         icon="pi pi-external-link"
                         onClick={() => {

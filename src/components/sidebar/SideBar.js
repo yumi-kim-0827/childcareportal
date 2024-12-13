@@ -19,11 +19,11 @@ export default function SideBar() {
   const btnRef7 = useRef(null);
 
   return (
-    <div className="fixed card z-50 max-medium:hidden max-medium:bg-red-500">
+    <div className="fixed card z-50">
       <div className="min-h-screen flex flex-col relative lg:static">
         <div
           id="app-sidebar-2"
-          className="surface-section w-[280px] max-medium:w-[180px] max-medium:bg-red-800 h-screen block flex-shrink-0 absolute lg:static left-0 top-0 z-1 border-right-1 surface-border select-none"
+          className="surface-section w-[280px] max-medium:w-[180px] h-screen block flex-shrink-0 absolute lg:static left-0 top-0 z-1 border-right-1 surface-border select-none"
         >
           <div className="flex flex-column h-full">
             <div className="flex align-items-center justify-content-between px-4 pt-3 flex-shrink-0">
@@ -33,14 +33,14 @@ export default function SideBar() {
                   router.push("/");
                 }}
               >
-                <span className="font-semibold text-2xl text-primary">
+                <span className="font-semibold text-2xl text-primary medium:text-xl">
                   차일드케어포털
                   <Tag value="childcareportal"></Tag>
                 </span>
               </span>
             </div>
             <div className="overflow-y-auto">
-              <ul className="list-none p-3 m-0">
+              <ul className="list-none p-3 m-0 max-medium:p-2">
                 <li>
                   <StyleClass
                     nodeRef={btnRef1}
@@ -52,9 +52,11 @@ export default function SideBar() {
                   >
                     <div
                       ref={btnRef1}
-                      className="p-ripple p-3 max-medium:p-1 flex align-items-center justify-content-between text-600 cursor-pointer"
+                      className="p-ripple large:p-3 flex align-items-center justify-content-between text-600 cursor-pointer medium:p-0"
                     >
-                      <span className="font-medium">신생아 케어</span>
+                      <span className="font-medium max-medium:text-sm">
+                        신생아 케어
+                      </span>
                       <i className="pi pi-chevron-down"></i>
                       <Ripple />
                     </div>
@@ -67,7 +69,7 @@ export default function SideBar() {
                     >
                       <a className="p-ripple flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors w-full">
                         <BsFillPinMapFill className="mr-2" />
-                        <span className="font-medium">
+                        <span className="font-medium max-medium:text-sm">
                           산후조리가 필요한 이유
                         </span>
                         <Ripple />
@@ -87,7 +89,9 @@ export default function SideBar() {
                           className="p-ripple flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors w-full"
                         >
                           <FaHandsHoldingChild className=" mr-2" />
-                          <span className="font-medium">지역별 산후조리원</span>
+                          <span className="font-medium max-medium:text-sm">
+                            지역별 산후조리원
+                          </span>
                           <i className="pi pi-chevron-down ml-auto mr-1"></i>
                           <Ripple />
                         </a>
@@ -107,7 +111,9 @@ export default function SideBar() {
                               className="p-ripple flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors w-full"
                             >
                               <BsFillPinMapFill className="mr-2" />
-                              <span className="font-medium">서울</span>
+                              <span className="font-medium max-medium:text-sm">
+                                서울
+                              </span>
                               <i className="pi pi-chevron-down ml-auto mr-1"></i>
                               <Ripple />
                             </a>
@@ -120,7 +126,9 @@ export default function SideBar() {
                             >
                               <a className="p-ripple flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors w-full">
                                 <BsRecordFill className="mr-2 text-xs text-slate-300" />
-                                <span className="font-medium">강남</span>
+                                <span className="font-medium max-medium:text-sm">
+                                  강남
+                                </span>
                                 <Ripple />
                               </a>
                             </li>
@@ -140,7 +148,9 @@ export default function SideBar() {
                               className="p-ripple flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors w-full"
                             >
                               <BsFillPinMapFill className="mr-2" />
-                              <span className="font-medium">경기</span>
+                              <span className="font-medium max-medium:text-sm">
+                                경기
+                              </span>
                               <i className="pi pi-chevron-down ml-auto mr-1"></i>
                               <Ripple />
                             </a>
@@ -153,7 +163,9 @@ export default function SideBar() {
                             >
                               <a className="p-ripple flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors w-full">
                                 <BsRecordFill className="mr-2 text-xs text-slate-300" />
-                                <span className="font-medium">고양시</span>
+                                <span className="font-medium max-medium:text-sm">
+                                  고양시
+                                </span>
                                 <Ripple />
                               </a>
                             </li>
@@ -166,7 +178,9 @@ export default function SideBar() {
                             >
                               <a className="p-ripple flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors w-full">
                                 <BsRecordFill className="mr-2 text-xs text-slate-300" />
-                                <span className="font-medium">광명시</span>
+                                <span className="font-medium max-medium:text-sm">
+                                  광명시
+                                </span>
                                 <Ripple />
                               </a>
                             </li>
@@ -177,7 +191,9 @@ export default function SideBar() {
                             >
                               <a className="p-ripple flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors w-full">
                                 <BsRecordFill className="mr-2 text-xs text-slate-300" />
-                                <span className="font-medium">군포시</span>
+                                <span className="font-medium max-medium:text-sm">
+                                  군포시
+                                </span>
                                 <Ripple />
                               </a>
                             </li>
@@ -188,7 +204,9 @@ export default function SideBar() {
                             >
                               <a className="p-ripple flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors w-full">
                                 <BsRecordFill className="mr-2 text-xs text-slate-300" />
-                                <span className="font-medium">김포시</span>
+                                <span className="font-medium max-medium:text-sm">
+                                  김포시
+                                </span>
                                 <Ripple />
                               </a>
                             </li>
@@ -201,7 +219,9 @@ export default function SideBar() {
                             >
                               <a className="p-ripple flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors w-full">
                                 <BsRecordFill className="mr-2 text-xs text-slate-300" />
-                                <span className="font-medium">남양주시</span>
+                                <span className="font-medium max-medium:text-sm">
+                                  남양주시
+                                </span>
                                 <Ripple />
                               </a>
                             </li>
@@ -214,7 +234,9 @@ export default function SideBar() {
                             >
                               <a className="p-ripple flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors w-full">
                                 <BsRecordFill className="mr-2 text-xs text-slate-300" />
-                                <span className="font-medium">부천시</span>
+                                <span className="font-medium max-medium:text-sm">
+                                  부천시
+                                </span>
                                 <Ripple />
                               </a>
                             </li>
@@ -227,7 +249,9 @@ export default function SideBar() {
                             >
                               <a className="p-ripple flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors w-full">
                                 <BsRecordFill className="mr-2 text-xs text-slate-300" />
-                                <span className="font-medium">성남시</span>
+                                <span className="font-medium max-medium:text-sm">
+                                  성남시
+                                </span>
                                 <Ripple />
                               </a>
                             </li>
@@ -238,7 +262,9 @@ export default function SideBar() {
                             >
                               <a className="p-ripple flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors w-full">
                                 <BsRecordFill className="mr-2 text-xs text-slate-300" />
-                                <span className="font-medium">수원시</span>
+                                <span className="font-medium max-medium:text-sm">
+                                  수원시
+                                </span>
                                 <Ripple />
                               </a>
                             </li>
@@ -251,7 +277,9 @@ export default function SideBar() {
                             >
                               <a className="p-ripple flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors w-full">
                                 <BsRecordFill className="mr-2 text-xs text-slate-300" />
-                                <span className="font-medium">시흥시</span>
+                                <span className="font-medium max-medium:text-sm">
+                                  시흥시
+                                </span>
                                 <Ripple />
                               </a>
                             </li>
@@ -262,7 +290,9 @@ export default function SideBar() {
                             >
                               <a className="p-ripple flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors w-full">
                                 <BsRecordFill className="mr-2 text-xs text-slate-300" />
-                                <span className="font-medium">안산시</span>
+                                <span className="font-medium max-medium:text-sm">
+                                  안산시
+                                </span>
                                 <Ripple />
                               </a>
                             </li>
@@ -273,7 +303,9 @@ export default function SideBar() {
                             >
                               <a className="p-ripple flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors w-full">
                                 <BsRecordFill className="mr-2 text-xs text-slate-300" />
-                                <span className="font-medium">안양시</span>
+                                <span className="font-medium max-medium:text-sm">
+                                  안양시
+                                </span>
                                 <Ripple />
                               </a>
                             </li>
@@ -284,7 +316,9 @@ export default function SideBar() {
                             >
                               <a className="p-ripple flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors w-full">
                                 <BsRecordFill className="mr-2 text-xs text-slate-300" />
-                                <span className="font-medium">양주시</span>
+                                <span className="font-medium max-medium:text-sm">
+                                  양주시
+                                </span>
                                 <Ripple />
                               </a>
                             </li>
@@ -295,7 +329,9 @@ export default function SideBar() {
                             >
                               <a className="p-ripple flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors w-full">
                                 <BsRecordFill className="mr-2 text-xs text-slate-300" />
-                                <span className="font-medium">용인시</span>
+                                <span className="font-medium max-medium:text-sm">
+                                  용인시
+                                </span>
                                 <Ripple />
                               </a>
                             </li>
@@ -306,7 +342,9 @@ export default function SideBar() {
                             >
                               <a className="p-ripple flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors w-full">
                                 <BsRecordFill className="mr-2 text-xs text-slate-300" />
-                                <span className="font-medium">의왕시</span>
+                                <span className="font-medium max-medium:text-sm">
+                                  의왕시
+                                </span>
                                 <Ripple />
                               </a>
                             </li>
@@ -319,7 +357,9 @@ export default function SideBar() {
                             >
                               <a className="p-ripple flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors w-full">
                                 <BsRecordFill className="mr-2 text-xs text-slate-300" />
-                                <span className="font-medium">의정부시</span>
+                                <span className="font-medium max-medium:text-sm">
+                                  의정부시
+                                </span>
                                 <Ripple />
                               </a>
                             </li>
@@ -330,7 +370,9 @@ export default function SideBar() {
                             >
                               <a className="p-ripple flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors w-full">
                                 <BsRecordFill className="mr-2 text-xs text-slate-300" />
-                                <span className="font-medium">이천시</span>
+                                <span className="font-medium max-medium:text-sm">
+                                  이천시
+                                </span>
                                 <Ripple />
                               </a>
                             </li>
@@ -341,7 +383,9 @@ export default function SideBar() {
                             >
                               <a className="p-ripple flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors w-full">
                                 <BsRecordFill className="mr-2 text-xs text-slate-300" />
-                                <span className="font-medium">파주시</span>
+                                <span className="font-medium max-medium:text-sm">
+                                  파주시
+                                </span>
                                 <Ripple />
                               </a>
                             </li>
@@ -354,7 +398,9 @@ export default function SideBar() {
                             >
                               <a className="p-ripple flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors w-full">
                                 <BsRecordFill className="mr-2 text-xs text-slate-300" />
-                                <span className="font-medium">평택시</span>
+                                <span className="font-medium max-medium:text-sm">
+                                  평택시
+                                </span>
                                 <Ripple />
                               </a>
                             </li>
@@ -369,7 +415,9 @@ export default function SideBar() {
                     >
                       <a className="p-ripple flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors w-full">
                         <BsFillPinMapFill className="mr-2" />
-                        <span className="font-medium">추천 이유식 레시피</span>
+                        <span className="font-medium max-medium:text-sm">
+                          추천 이유식 레시피
+                        </span>
                         <Ripple />
                       </a>
                     </li>
@@ -388,9 +436,11 @@ export default function SideBar() {
                   >
                     <div
                       ref={btnRef6}
-                      className="p-ripple p-3 flex align-items-center justify-content-between text-600 cursor-pointer"
+                      className="p-ripple large:p-3 flex align-items-center justify-content-between text-600 cursor-pointer medium:p-0"
                     >
-                      <span className="font-medium">어린이집</span>
+                      <span className="font-medium max-medium:text-sm">
+                        어린이집
+                      </span>
                       <i className="pi pi-chevron-down"></i>
                       <Ripple />
                     </div>
@@ -403,7 +453,9 @@ export default function SideBar() {
                     >
                       <a className="p-ripple flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors w-full">
                         <BsFillPinMapFill className="mr-2" />
-                        <span className="font-medium">지도로 찾기</span>
+                        <span className="font-medium max-medium:text-sm">
+                          지도로 찾기
+                        </span>
                         <Ripple />
                       </a>
                     </li>
@@ -414,7 +466,9 @@ export default function SideBar() {
                     >
                       <a className="p-ripple flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors w-full">
                         <FaSchool className="mr-2" />
-                        <span className="font-medium">서울 어린이집</span>
+                        <span className="font-medium max-medium:text-sm">
+                          서울 어린이집
+                        </span>
                         <Ripple />
                       </a>
                     </li>
@@ -425,7 +479,9 @@ export default function SideBar() {
                     >
                       <a className="p-ripple flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors w-full">
                         <FaSchool className="mr-2" />
-                        <span className="font-medium">경기 어린이집</span>
+                        <span className="font-medium max-medium:text-sm">
+                          경기 어린이집
+                        </span>
                         <Ripple />
                       </a>
                     </li>
@@ -436,7 +492,9 @@ export default function SideBar() {
                     >
                       <a className="p-ripple flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors w-full">
                         <FaSchool className="mr-2" />
-                        <span className="font-medium">월별 신규 어린이집</span>
+                        <span className="font-medium max-medium:text-sm">
+                          월별 신규 어린이집
+                        </span>
                         <Ripple />
                       </a>
                     </li>
@@ -455,9 +513,11 @@ export default function SideBar() {
                   >
                     <div
                       ref={btnRef5}
-                      className="p-ripple p-3 flex align-items-center justify-content-between text-600 cursor-pointer"
+                      className="p-ripple large:p-3 flex align-items-center justify-content-between text-600 cursor-pointer medium:p-0"
                     >
-                      <span className="font-medium">돌봄서비스</span>
+                      <span className="font-medium max-medium:text-sm">
+                        돌봄서비스
+                      </span>
                       <i className="pi pi-chevron-down"></i>
                       <Ripple className="mr-2" />
                     </div>
@@ -470,7 +530,7 @@ export default function SideBar() {
                     >
                       <a className="p-ripple flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors w-full">
                         <FaBaby className="mr-2" />
-                        <span className="font-medium">
+                        <span className="font-medium max-medium:text-sm">
                           아이돌봄 서비스 제공기관
                         </span>
                         <Ripple />
@@ -491,9 +551,11 @@ export default function SideBar() {
                   >
                     <div
                       ref={btnRef7}
-                      className="p-ripple p-3 flex align-items-center justify-content-between text-600 cursor-pointer"
+                      className="p-ripple large:p-3 flex align-items-center justify-content-between text-600 cursor-pointer medium:p-0"
                     >
-                      <span className="font-medium">청소년</span>
+                      <span className="font-medium max-medium:text-sm">
+                        청소년
+                      </span>
                       <i className="pi pi-chevron-down"></i>
                       <Ripple />
                     </div>
@@ -506,7 +568,7 @@ export default function SideBar() {
                     >
                       <a className="p-ripple flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors w-full">
                         <BiSolidDonateHeart className="mr-2" />
-                        <span className="font-medium">
+                        <span className="font-medium max-medium:text-sm">
                           청소년 자원봉사 프로그램 목록
                         </span>
                         <Ripple />

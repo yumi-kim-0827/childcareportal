@@ -8,8 +8,9 @@ module.exports = {
   theme: {
     extend: {
       screens: {
-        medium: "1281px",
-        small: "769px",
+        large: "1920px", //=> @media (min-width: 1920px) { ... }
+        medium: "1024px",
+        small: "768px",
       },
     },
   },
