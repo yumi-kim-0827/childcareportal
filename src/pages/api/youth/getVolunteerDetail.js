@@ -3,21 +3,26 @@
 import { parseStringPromise } from "xml2js";
 
 export default async function getVolunteerDetail(req, res) {
+  const { key1: id } = req.query;
   const KEY = process.env.NEXT_PUBLIC_PUBLICDATA_KEY;
 
+  if (!id) {
+    return res.status(400).json({ error: "id parameter is required." });
+  }
+
   if (req.method === "GET") {
-    const { id } = req.query;
-    console.log("아녕");
     try {
       const response = await fetch(
         `https://apis.data.go.kr/1383000/YouthActivInfoVolSrvc/getVolProgrmInfo?serviceKey=${KEY}&key1=${id}`
       );
       const text = await response.text();
-
+      console.log(id);
       // XML 텍스트를 JavaScript 객체로 변환
       const data = await parseStringPromise(text);
+      res.setHeader("Access-Control-Allow-Origin", "*");
       // 변환된 데이터를 JSON 형식으로 클라이언트에게 보냄
       res.status(200).json(data);
+      return data;
     } catch (error) {
       console.error(error);
       res.status(500).json({ error: error.message });

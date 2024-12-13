@@ -53,6 +53,7 @@ export default function Main() {
     setPageNo(event.first + 1);
   };
 
+  console.log(list);
   return (
     <>
       <Head>
@@ -83,7 +84,7 @@ export default function Main() {
       <div className="flex flex-col gap-4">
         <Card title="청소년 자원봉사 최신 목록"></Card>
         <Card>
-          <div className="flex text-center">
+          <div className="py-2 flex text-center bg-gray-100">
             <p className="w-1/5">
               <span className="py-1 px-2 rounded-full">
                 <i className="pi pi-building"></i>
@@ -100,14 +101,17 @@ export default function Main() {
               <i className="pi pi-money-bill"></i>참가비
             </p>
             <p className="w-1/5">
-              <i className="pi pi-money-bill"></i>자세히보기
+              <i className="pi pi-pi-list-check"></i>자세히보기
             </p>
           </div>
           {list.length > 0 ? (
             <>
               {list.map((item, id) => {
                 return (
-                  <div key={id} className="flex text-center">
+                  <div
+                    key={id}
+                    className="mt-2 flex items-center text-center hover:bg-yellow-100"
+                  >
                     <p className="w-1/5">{item.organNm}</p>
                     <p className="w-2/5">{item.pgmNm}</p>
                     <p className="w-1/5">{item.target}</p>

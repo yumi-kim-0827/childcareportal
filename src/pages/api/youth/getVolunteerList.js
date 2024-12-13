@@ -10,7 +10,7 @@ export default async function getVolunteerList(req, res) {
 
     try {
       const response = await fetch(
-        `https://apis.data.go.kr/1383000/YouthActivInfoVolSrvc/getVolProgrmList?serviceKey=${KEY}&pageNo=${pageNo}&numOfRows=20&sdate=20200101`
+        `https://apis.data.go.kr/1383000/YouthActivInfoVolSrvc/getVolProgrmList?serviceKey=${KEY}&pageNo=${pageNo}&numOfRows=20&sdate=20240101`
       );
       const text = await response.text();
 

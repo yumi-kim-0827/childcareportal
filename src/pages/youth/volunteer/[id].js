@@ -5,23 +5,21 @@ import Head from "next/head";
 import { useRouter } from "next/router";
 //components
 import { Card } from "primereact/card";
-import { DataTable } from "primereact/datatable";
-import { Column } from "primereact/column";
-import { Button } from "primereact/button";
+import { Fieldset } from "primereact/fieldset";
 
 export default function Main() {
   const router = useRouter();
   const { id } = router.query;
+  //상세내용 상태관리
+  const [programDetail, setProgramDetail] = useState([]);
 
-  const [programDetail, setProgramDetail] = useState({});
-
-  const fetchList = async (id) => {
+  const fetchDetail = async (id) => {
     try {
       const response = await fetch(`/api/youth/getVolunteerDetail?key1=${id}`);
 
       if (response.ok) {
         const result = await response.json();
-        const data = result.response.body[0].items[0].item[0];
+        const data = result?.response?.body?.[0]?.items?.[0]?.item?.[0];
         setProgramDetail(data);
       } else {
         const errorText = await response.text(); // 에러 메시지 확인
@@ -34,8 +32,13 @@ export default function Main() {
   };
 
   useEffect(() => {
-    fetchList(id);
+    if (id) {
+      fetchDetail(id);
+    }
   }, [id]);
+
+  console.log(programDetail);
+
   return (
     <>
       <Head>
@@ -64,7 +67,48 @@ export default function Main() {
         <meta property="og:type" content="website" />
       </Head>
       <div className="flex flex-col gap-4">
-        <Card title="상세"></Card>
+        <Card title="상세">
+          <div className="flex flex-col gap-2">
+            <Fieldset legend="주소">
+              <p className="m-0">
+                {programDetail.addr?.[0] || `주소 정보가 없습니다.`}
+              </p>
+            </Fieldset>
+            <Fieldset legend="프로그램 이름">
+              <p className="m-0">
+                {programDetail.pgmNm?.[0] || `정보가 없습니다.`}
+              </p>
+            </Fieldset>
+            <Fieldset legend="봉사활동 내용">
+              <p className="m-0">
+                {programDetail.info1?.[0] || `정보가 없습니다.`}
+              </p>
+              <p className="m-0">
+                {programDetail.info2?.[0] || `정보가 없습니다.`}
+              </p>
+            </Fieldset>
+            <Fieldset legend="담당자 이름">
+              <p className="m-0">
+                {programDetail.managerNm?.[0] || `정보가 없습니다.`}
+              </p>
+            </Fieldset>
+            <Fieldset legend="기관명">
+              <p className="m-0">
+                {programDetail.target?.[0] || `정보가 없습니다.`}
+              </p>
+            </Fieldset>
+            <Fieldset legend="연락처">
+              <p className="m-0">
+                {programDetail.tel?.[0] || `정보가 없습니다.`}
+              </p>
+            </Fieldset>
+            <Fieldset legend="참가 대상">
+              <p className="m-0">
+                {programDetail.organNm?.[0] || `정보가 없습니다.`}
+              </p>
+            </Fieldset>
+          </div>
+        </Card>
       </div>
     </>
   );
